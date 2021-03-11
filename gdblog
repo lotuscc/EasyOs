@@ -46,3 +46,157 @@ Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
 Continuing.
 
 Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Undefined command: "sreg".  Try "help".
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+=> 0x100044 <kern_init+68>:	addl   $0x1,-0x4(%ebp)
+   0x100048 <kern_init+72>:	cmpl   $0x9,-0x4(%ebp)
+   0x10004c <kern_init+76>:	jle    0x10002f <kern_init+47>
+   0x10004e <kern_init+78>:	jmp    0x10004e <kern_init+78>
+   0x100050:	add    $0x0,%al
+=> 0x10002f <kern_init+47>:	mov    -0x4(%ebp),%eax
+   0x100032 <kern_init+50>:	lea    0x0(,%eax,4),%edx
+   0x100039 <kern_init+57>:	mov    -0x10(%ebp),%eax
+   0x10003c <kern_init+60>:	add    %edx,%eax
+   0x10003e <kern_init+62>:	movl   $0x50,(%eax)
+   0x100044 <kern_init+68>:	addl   $0x1,-0x4(%ebp)
+   0x100048 <kern_init+72>:	cmpl   $0x9,-0x4(%ebp)
+   0x10004c <kern_init+76>:	jle    0x10002f <kern_init+47>
+   0x10004e <kern_init+78>:	jmp    0x10004e <kern_init+78>
+   0x100050:	add    $0x0,%al
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Continuing.
+[Inferior 1 (Remote target) exited normally]
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Cannot find bounds of current function
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 2 at 0x100052: file kern/init/init.c, line 14.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:14
+Breakpoint 3 at 0x100075: file kern/init/init.c, line 21.
+Continuing.
+
+Breakpoint 3, kern_init () at kern/init/init.c:21
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 2 at 0x100026: file kern/init/init.c, line 8.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:8
+Breakpoint 3 at 0x100052: file kern/init/init.c, line 14.
+Continuing.
+
+Breakpoint 3, kern_init () at kern/init/init.c:14
+EasyOS_putc (ch=115 's', pos=0) at kern/init/init.c:25
+kern_init () at kern/init/init.c:14
+$1 = 1
+Breakpoint 4 at 0x100075: file kern/init/init.c, line 21.
+Continuing.
+
+Breakpoint 4, kern_init () at kern/init/init.c:21
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 2 at 0x100052: file kern/init/init.c, line 14.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:14
+Breakpoint 3 at 0x100075: file kern/init/init.c, line 21.
+Continuing.
+
+Breakpoint 3, kern_init () at kern/init/init.c:21
+Please answer y or n.
+Please answer y or n.
+Please answer y or n.
