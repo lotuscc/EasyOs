@@ -1,20 +1,16 @@
 #include <vga.h>
 
-extern void EasyOS_PutChar(char ch, int pos);
-
-
 int kern_init(void) {
 
-    int a = 10;
-    int b = 20;
-    int c = a + b;
+    EasyOS_ClearScreen();
 
+    char c1[20] = "peng\n";
 
-    for (int i = 0; i < 20; i++)
-    {
-        EasyOS_PutChar('s', i);
-    }
-    
+    EasyOS_PutStr("lotuscc\n", 0, 0);
+
+    EasyOS_PutStr("lotuscc\nzhangxiang", 0, 2);
+
+    EasyOS_PutStr(c1, 1, 3);
 
     /* do nothing */
     while (1);

@@ -242,3 +242,269 @@ Breakpoint 2, kern_init () at kern/init/init.c:15
 
 Breakpoint 2, kern_init () at kern/init/init.c:15
 Please answer y or n.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100042: file kern/init/init.c, line 17.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:17
+Please answer y or n.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100042: file kern/init/init.c, line 17.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:17
+Please answer y or n.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100045: file kern/init/init.c, line 17.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:17
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10002c: file kern/init/init.c, line 12.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:12
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Continuing.
+[Inferior 1 (Remote target) exited normally]
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100052: file kern/init/init.c, line 16.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:16
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+No line 12 in the current file.
+Breakpoint 2 at 0x10002c: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Undefined command: "b16".  Try "help".
+Breakpoint 2 at 0x100065: file kern/init/init.c, line 22.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:22
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100065: file kern/init/init.c, line 19.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:19
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Continuing.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10003f: file kern/init/init.c, line 15.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Continuing.
+[Inferior 1 (Remote target) exited normally]
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10003f: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10003f: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10003f: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 3 at 0x10007d: file kern/init/init.c, line 20.
+Continuing.
+
+Breakpoint 3, kern_init () at kern/init/init.c:20
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10003f: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 3 at 0x10007d: file kern/init/init.c, line 20.
+Continuing.
+
+Breakpoint 3, kern_init () at kern/init/init.c:20
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x10007d: file kern/init/init.c, line 19.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:19
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x1000b4: file kern/init/init.c, line 23.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:23
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100051: file kern/init/init.c, line 11.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:11
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 3.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:3
+Breakpoint 2 at 0x100056: file kern/init/init.c, line 13.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:13
+Please answer y or n.
