@@ -200,3 +200,45 @@ Breakpoint 3, kern_init () at kern/init/init.c:21
 Please answer y or n.
 Please answer y or n.
 Please answer y or n.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+Breakpoint 2 at 0x100042: file kern/init/init.c, line 15.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Undefined command: "v".  Try "help".
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:6
+Breakpoint 2 at 0x100028: file kern/init/init.c, line 15.
+Continuing.
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+
+Breakpoint 2, kern_init () at kern/init/init.c:15
+Please answer y or n.

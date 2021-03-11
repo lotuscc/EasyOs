@@ -1,3 +1,8 @@
+#include <vga.h>
+
+extern void EasyOS_PutChar(char ch, int pos);
+
+
 int kern_init(void) {
 
     int a = 10;
@@ -15,8 +20,3 @@ int kern_init(void) {
     while (1);
 }
 
-void EasyOS_PutChar(char ch, int pos){
-    char *addr = (unsigned int *)0x0B8000;
-    *(addr + pos * 2) = ch;
-    *(addr + pos * 2 + 1 ) = 0x0c;
-}

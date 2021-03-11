@@ -28,9 +28,11 @@ boot: sign
 	./bin/sign ./obj/bootblock.out ./bin/bootblock
 
 kernel:
-	$(CC) -Ikern/init/ $(CFLAGS) -c kern/init/init.c -o obj/kern/init/init.o
+	$(CC) -Ikern/init/ -Ikern/vga/ $(CFLAGS) -c kern/init/init.c -o obj/kern/init.o
 
-	$(LD) $(LDFLAGS) -T ./tools/kernel.ld -o ./bin/kernel  ./obj/kern/init/init.o 
+	$(CC) -Ikern/vga/  $(CFLAGS) -c kern/vga/vga.c -o obj/kern/vga.o
+
+	$(LD) $(LDFLAGS) -T ./tools/kernel.ld -o ./bin/kernel  ./obj/kern/init.o ./obj/kern/vga.o 
 
 
 c.img: boot kernel

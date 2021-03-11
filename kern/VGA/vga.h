@@ -1,3 +1,0 @@
-
-
-int VGA_Init();
