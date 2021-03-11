@@ -44,4 +44,5 @@ qemu: c.img
 	qemu-system-i386 -S -s -hda ./img/c.img -monitor stdio
 
 clean:
-	rm obj/*.o
+	rm obj/*.o obj/*.out
+	rm obj/kern/*.o
