@@ -1,0 +1,39 @@
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:1
+$1 = 10
+$2 = 20
+=> 0x100014 <kern_init+20>:	mov    -0x4(%ebp),%edx
+   0x100017 <kern_init+23>:	mov    -0x8(%ebp),%eax
+   0x10001a <kern_init+26>:	add    %edx,%eax
+   0x10001c <kern_init+28>:	mov    %eax,-0xc(%ebp)
+   0x10001f <kern_init+31>:	jmp    0x10001f <kern_init+31>
+eax            0x100000            1048576
+ecx            0x0                 0
+edx            0x0                 0
+ebx            0x10094             65684
+esp            0x7bd8              0x7bd8
+ebp            0x7be8              0x7be8
+esi            0x10094             65684
+edi            0x0                 0
+eip            0x100014            0x100014 <kern_init+20>
+eflags         0x6                 [ PF ]
+cs             0x8                 8
+ss             0x10                16
+ds             0x10                16
+es             0x10                16
+fs             0x10                16
+gs             0x10                16
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 1.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Argument required (filename to set it to.).
