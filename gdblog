@@ -23,3 +23,16 @@
 2: /x end = 0x0
 3: /x maxpa = 0x7fe0000
 
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100227: file kern/mm/mm.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+
+Breakpoint 2, page_init () at kern/mm/mm.c:6
+kern_init () at kern/init/init.c:15

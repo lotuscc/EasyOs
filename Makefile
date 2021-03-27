@@ -19,9 +19,9 @@ sign: ./tools/sign.c
 
 boot: sign
 
-	$(ASM) -Iboot $(ASMFLAGS) -Os -c ./boot/bootasm.S -o obj/bootasm.o
+	$(ASM) $(Inc) $(ASMFLAGS) -Os -c ./boot/bootasm.S -o obj/bootasm.o
 	
-	$(CC) -Iboot $(CFLAGS) -Os -c ./boot/bootmain.c -o obj/bootmain.o
+	$(CC) $(Inc) $(CFLAGS) -Os -c ./boot/bootmain.c -o obj/bootmain.o
 	
 	$(LD) $(LDFLAGS) -N -e start -T tools/boot.ld ./obj/bootasm.o ./obj/bootmain.o -o ./obj/bootblock.o
 
@@ -42,7 +42,7 @@ kernel:
 		./obj/kern/mm.o 
 
 hd60M.img: boot kernel
-	dd if=/dev/zero of=./img/hd60M.img bs=1M count=60
+	# dd if=/dev/zero of=./img/hd60M.img bs=1M count=60
 	dd if=./bin/bootblock of=./img/hd60M.img bs=512 count=1 conv=notrunc
 	dd if=./bin/kernel of=./img/hd60M.img seek=1 conv=notrunc
 
