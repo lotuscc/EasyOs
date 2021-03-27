@@ -1,16 +1,6 @@
 #include "vga.h"
 
-struct VGA_Color_Struct
-{
-    char Red; // 0x0c
-
-};
-
-#define VGA_X_Max 80
-#define VGA_Y_Max 25
-
-
-char *addr = (int *)0x0B8000;
+char *addr = (char *)0x0B8000;
 
 int CurPos = 0;
 
@@ -43,6 +33,13 @@ int EasyOS_PutChar_XY(char ch, int posx, int posy){
 }
 
 int EasyOS_PutStr(char* str, int posx, int posy){
+
+    int a = 10;
+    int b = 20;
+
+    int c = a + b;
+
+
     int pos = posy * 80 + posx;
 
     while (*str != '\0'){
@@ -60,3 +57,4 @@ int EasyOS_PutStr(char* str, int posx, int posy){
 
     return 0;
 }
+

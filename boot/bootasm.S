@@ -8,6 +8,8 @@
 .set PROT_MODE_CSEG,        0x8                     # kernel code segment selector
 .set PROT_MODE_DSEG,        0x10                    # kernel data segment selector
 .set CR0_PE_ON,             0x1                     # protected mode enable flag
+.set SMAP,                  0x534d4150              # char 'SMAP'
+.set MMPOS,                 0x8000                  # 
 
 # start address should be 0:7c00, in real mode, the beginning address of the running bootloader
 .globl start
@@ -41,6 +43,38 @@ seta20.2:
 
     movb $0xdf, %al                                 # 0xdf -> port 0x60
     outb %al, $0x60                                 # 0xdf = 11011111, means set P2's A20 bit(the 1 bit) to 1
+
+
+probe_memory:
+# 对0x8000处的32位单元清零,即给位于0x8000处的
+# struct e820map的成员变量nr_map清零
+                  movl $0, 0x8000
+                  xorl %ebx, %ebx
+# 表示设置调用INT 15h BIOS中断后，BIOS返回的映射地址描述符的起始地址
+                  movw $0x8004, %di
+start_probe:
+                  movl $0xE820, %eax # INT 15的中断调用参数
+# 设置地址范围描述符的大小为20字节，其大小等于struct e820map的成员变量map的大小
+                  movl $20, %ecx
+# 设置edx为534D4150h (即4个ASCII字符“SMAP”)，这是一个约定
+                  movl $SMAP, %edx
+# 调用int 0x15中断，要求BIOS返回一个用地址范围描述符表示的内存段信息
+                  int $0x15
+# 如果eflags的CF位为0，则表示还有内存段需要探测
+                  jnc cont
+# 探测有问题，结束探测
+                  movw $12345, 0x8000
+                  jmp finish_probe
+cont:
+# 设置下一个BIOS返回的映射地址描述符的起始地址
+                  addw $20, %di
+# 递增struct e820map的成员变量nr_map
+                  incl 0x8000
+# 如果INT0x15返回的ebx为零，表示探测结束，否则继续探测
+                  cmpl $0, %ebx
+                  jnz start_probe
+finish_probe:
+
 
     # Switch from real to protected mode, using a bootstrap GDT
     # and segment translation that makes virtual addresses

@@ -1,8 +1,16 @@
+#include <mm.h>
 #include <vga.h>
 
 int kern_init(void) {
 
+    int a = 10;
+    int b = 20;
+
+    int c = a + b;
+
     EasyOS_ClearScreen();
+
+    page_init();
 
     char c1[20] = "peng\n";
 
