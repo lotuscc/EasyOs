@@ -8,7 +8,11 @@ LDFLAGS = -m elf_i386 -nostdlib
 CC		= gcc
 CFLAGS	= -O0 -fno-builtin -Wall -ggdb -m32 -gstabs -fno-stack-protector -nostdinc
 
-Inc =	-Iboot -Ikern/init/ -Ikern/vga/ -Ikern/mm/
+Inc =	-Iboot \
+		-Ikern/init/ \
+		-Ikern/vga/ \
+		-Ikern/mm/ \
+		-Ikern/libs/ 
 
 # first task
 all: hd60M.img
@@ -47,7 +51,7 @@ hd60M.img: boot kernel
 	dd if=./bin/kernel of=./img/hd60M.img seek=1 conv=notrunc
 
 qemu: hd60M.img 
-	qemu-system-i386 -S -s -hda ./img/hd60M.img -monitor stdio
+	qemu-system-i386 -m 32M -S -s -hda ./img/hd60M.img -monitor stdio
 
 bochs: hd60M.img 
 	bochs -f bochsrc

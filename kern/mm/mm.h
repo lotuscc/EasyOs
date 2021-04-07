@@ -1,6 +1,5 @@
 #ifndef __MM_H__
 #define __MM_H__
-
 #include <elf.h>
 
 /* All physical memory mapped at this address */
@@ -15,17 +14,19 @@
 #define E820_ARR            2       // address range reserved
 
 struct e820map {
-    int nr_map;
+    int n_map;
     struct {
-        uint64_t addr;
-        uint64_t size;
+        uint32_t addrLow;
+        uint32_t addrHigh;
+        uint32_t sizeLow;
+        uint32_t sizeHigh;
         uint32_t type;
     } __attribute__((packed)) map[E820MAX];
 };
 
 
-void page_init(void);
-
+void Page_Init(void);
+uint32_t CalMemSize(void);
 
 
 #endif /* !__MM_H__ */

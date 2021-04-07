@@ -5,5 +5,5 @@ set logging file gdblog
 set logging on
 
 break kern_init
-break page_init
+break CalMemSize
 x /5i $pc

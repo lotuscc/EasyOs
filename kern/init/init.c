@@ -3,22 +3,20 @@
 
 int kern_init(void) {
 
-    int a = 10;
-    int b = 20;
+    extern char etext[], edata[], end[];
 
-    int c = a + b;
+
+    EasyOS_PutIntX((uint32_t)etext, 0, 0);
+    EasyOS_PutIntX((uint32_t)edata, 2, 0);
+    EasyOS_PutIntX((uint32_t)end, 3, 0);
+
 
     EasyOS_ClearScreen();
+    // EasyOS_FillScreen('a');
+    
+    Page_Init();
 
-    page_init();
-
-    char c1[20] = "peng\n";
-
-    EasyOS_PutStr("lotuscc\n", 0, 0);
-
-    EasyOS_PutStr("lotuscc\nzhangxiang", 0, 2);
-
-    EasyOS_PutStr(c1, 1, 3);
+    EasyOS_PutStr("hello", 1, 0);
 
     /* do nothing */
     while (1);

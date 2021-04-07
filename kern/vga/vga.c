@@ -2,45 +2,63 @@
 
 char *addr = (char *)0x0B8000;
 
+int CurPosX = 0;
+int CurPosY = 0;
 int CurPos = 0;
 
 struct VGA_Color_Struct VGA_Color = {0x0c};
 
-void EasyOS_PutChar(char ch, int pos){  
+char NumtoChar_Map[16] = {'0','1','2','3','4','5','6','7','8','9',\
+                          'A','B','C','D','E','F'};
+
+struct NumBufferType{
+    char NumBuffer[64];
+    int Size;
+};
+
+int XYtoPos(int PosX, int PosY){
+    return PosX * 80 + PosY;
+}
+
+
+int EasyOS_PutChar(char ch, int pos){      
 
     *(addr + pos * 2) = ch;
     *(addr + pos * 2 + 1 ) = VGA_Color.Red;
-
 }
 
 int EasyOS_ClearScreen(){
-    for (int i = 0; i < 80 ; i++){
-        for (int j = 0; j < 25; j++){
+    for (int i = 0; i < 25 ; i++){
+        for (int j = 0; j < 80; j++){
             EasyOS_PutChar_XY(' ', i, j);
         }
     }
     return 0;
 }
 
-int EasyOS_PutChar_XY(char ch, int posx, int posy){  
-    if(posx > VGA_X_Max || posy > VGA_Y_Max)
+int EasyOS_FillScreen(char ch){
+    for (int i = 0; i < 25 ; i++){
+        for (int j = 0; j < 80; j++){
+            EasyOS_PutChar_XY(ch, i, j);
+        }
+    }
+    return 0;
+}
+
+
+int EasyOS_PutChar_XY(char ch, int PosX, int PosY){  
+    if(PosX > VGA_X_Max || PosY > VGA_Y_Max)
         return -1;
    
-    *(addr + (posy * 80 + posx) * 2) = ch;
-    *(addr + (posy * 80 + posx) * 2 + 1 ) = VGA_Color.Red;
+    *(addr + (PosX * 80 + PosY) * 2) = ch;
+    *(addr + (PosX * 80 + PosY) * 2 + 1 ) = VGA_Color.Red;
 
     return 0;
 }
 
-int EasyOS_PutStr(char* str, int posx, int posy){
+int EasyOS_PutStr(char* str, int PosX, int PosY){
 
-    int a = 10;
-    int b = 20;
-
-    int c = a + b;
-
-
-    int pos = posy * 80 + posx;
+    int pos = PosX * 80 + PosY;
 
     while (*str != '\0'){
 
@@ -58,3 +76,46 @@ int EasyOS_PutStr(char* str, int posx, int posy){
     return 0;
 }
 
+int EasyOS_PutIntX(uint32_t data, int PosX, int PosY){
+    
+    struct NumBufferType NumBuffer;
+    NumBuffer.Size = 0;
+    char ch = 0;
+
+    do{
+        ch = data % 16;
+        NumBuffer.NumBuffer[NumBuffer.Size++] = NumtoChar_Map[ch];
+        data /= 16; 
+
+    }while (data);
+
+    int Pos = XYtoPos(PosX, PosY);
+
+    while (NumBuffer.Size){
+        EasyOS_PutChar(NumBuffer.NumBuffer[--NumBuffer.Size], Pos++);
+    }
+    
+    return 0;
+}
+
+int EasyOS_PutIntD(uint32_t data, int PosX, int PosY){
+    
+    struct NumBufferType NumBuffer;
+    NumBuffer.Size = 0;
+    char ch = 0;
+
+    do{
+        ch = data % 10;
+        NumBuffer.NumBuffer[NumBuffer.Size++] = NumtoChar_Map[ch];
+        data /= 10; 
+
+    }while (data);
+
+    int Pos = XYtoPos(PosX, PosY);
+
+    while (NumBuffer.Size){
+        EasyOS_PutChar(NumBuffer.NumBuffer[--NumBuffer.Size], Pos++);
+    }
+    
+    return 0;
+}

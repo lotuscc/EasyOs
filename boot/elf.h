@@ -52,6 +52,4 @@ typedef unsigned long long uint64_t;
 
 
 
-
-
 #endif /* !__LIBS_ELF_H__ */

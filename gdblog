@@ -1,30 +1,5 @@
-1: /x begin = 0x0
-2: /x end = 0x9fc00
-3: /x maxpa = 0x9fc00
-
-1: /x begin = 0x9fc00
-2: /x end = 0xa0000
-3: /x maxpa = 0x9fc00
-
-1: /x begin = 0xf0000
-2: /x end = 0x100000
-3: /x maxpa = 0x9fc00
-
-1: /x begin = 0x100000
-2: /x end = 0x7fe0000
-3: /x maxpa = 0x9fc00
-3: /x maxpa = 0x7fe0000
-
-1: /x begin = 0x7fe0000
-2: /x end = 0x8000000
-3: /x maxpa = 0x7fe0000
-
-1: /x begin = 0xfffc0000
-2: /x end = 0x0
-3: /x maxpa = 0x7fe0000
-
 Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
-Breakpoint 2 at 0x100227: file kern/mm/mm.c, line 6.
+Breakpoint 2 at 0x10044a: file kern/mm/mm.c, line 41.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -33,6 +8,1057 @@ Breakpoint 2 at 0x100227: file kern/mm/mm.c, line 6.
 Continuing.
 
 Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
 
-Breakpoint 2, page_init () at kern/mm/mm.c:6
-kern_init () at kern/init/init.c:15
+Breakpoint 2, page_init () at kern/mm/mm.c:41
+CalMemSize () at kern/mm/mm.c:8
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x0
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0x400
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0x400
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0xa0000
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0xa0000
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x9fc00
+3: /x MemSize = 0xa0000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0xa0000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0x10000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0x10000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0x100000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0x100000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0xf0000
+3: /x MemSize = 0x100000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x100000
+3: /x MemSize = 0x100000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x100000
+3: /x MemSize = 0x1ee0000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x100000
+3: /x MemSize = 0x1ee0000
+4: /d i = 0
+1: /x AddBegin = 0x8000
+2: /x AddSize = 0x100000
+3: /x MemSize = 0x1fe0000
+4: /d i = 0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x10042f: file kern/mm/mm.c, line 41.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:41
+CalMemSize () at kern/mm/mm.c:8
+1: /d i = 0
+1: /d i = 0
+1: /d i = 0
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+1: /d i = 2
+1: /d i = 2
+1: /d i = 2
+2: /x AddSize = 0x10000
+1: /d i = 2
+2: /x AddSize = 0x100000
+1: /d i = 2
+2: /x AddSize = 0x100000
+1: /d i = 3
+2: /x AddSize = 0x100000
+1: /d i = 3
+2: /x AddSize = 0x100000
+1: /d i = 3
+2: /x AddSize = 0x1ee0000
+1: /d i = 3
+2: /x AddSize = 0x1fe0000
+1: /d i = 3
+2: /x AddSize = 0x1fe0000
+1: /d i = 3
+2: /x AddSize = 0x1fe0000
+1: /d i = 4
+2: /x AddSize = 0x1fe0000
+1: /d i = 4
+2: /x AddSize = 0x1fe0000
+1: /d i = 4
+2: /x AddSize = 0x20000
+1: /d i = 4
+2: /x AddSize = 0x2000000
+1: /d i = 4
+2: /x AddSize = 0x2000000
+1: /d i = 5
+2: /x AddSize = 0x2000000
+1: /d i = 5
+2: /x AddSize = 0x2000000
+1: /d i = 5
+2: /x AddSize = 0x40000
+1: /d i = 5
+2: /x AddSize = 0x0
+1: /d i = 5
+2: /x AddSize = 0x0
+2: /x AddSize = 0x0
+2: /x AddSize = 0x0
+page_init () at kern/mm/mm.c:44
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100421: file kern/mm/mm.c, line 37.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:37
+CalMemSize () at kern/mm/mm.c:8
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x0
+1: /d i = 0
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 2
+2: /x TolMemSize = 0x9fc00
+1: /d i = 2
+2: /x TolMemSize = 0x9fc00
+1: /d i = 2
+2: /x TolMemSize = 0x9fc00
+1: /d i = 2
+2: /x TolMemSize = 0x9fc00
+1: /d i = 2
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x9fc00
+1: /d i = 3
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 5
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 5
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 5
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 5
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 5
+2: /x TolMemSize = 0x1fe0000
+2: /x TolMemSize = 0x1fe0000
+2: /x TolMemSize = 0x1fe0000
+page_init () at kern/mm/mm.c:40
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100421: file kern/mm/mm.c, line 37.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:37
+CalMemSize () at kern/mm/mm.c:8
+1: /x MemSize = 0x20
+2: /x TolMemSize = 0x50
+1: /x MemSize = 0x20
+2: /x TolMemSize = 0x50
+1: /x MemSize = 0x20
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x20
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x0
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x9fc00
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x400
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0xa0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0xa0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0xa0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0xa0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x10000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x100000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x100000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x100000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x100000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x1ee0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x9fc00
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x1fe0000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x20000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x2000000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x2000000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x2000000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x2000000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x40000
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x1fe0000
+1: /x MemSize = 0x0
+2: /x TolMemSize = 0x1fe0000
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100424: file kern/mm/mm.c, line 47.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:47
+CalMemSize () at kern/mm/mm.c:12
+Breakpoint 3 at 0x100404: file kern/mm/mm.c, line 36.
+Continuing.
+
+Breakpoint 3, CalMemSize () at kern/mm/mm.c:36
+0x1:	0x53f000ff
+$1 = 1
+1: /x npage = 0x1
+2: TolMemSize = 80
+No symbol "i" in current context.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100424: file kern/mm/mm.c, line 47.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:47
+CalMemSize () at kern/mm/mm.c:12
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+1: /x TolMemSize = 0x50
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003fe: file kern/mm/mm.c, line 43.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:43
+CalMemSize () at kern/mm/mm.c:12
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003fe: file kern/mm/mm.c, line 43.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:43
+$1 = 2
+$2 = 33554432
+$3 = 4096
+$4 = 80
+$5 = 80
+$6 = 8192
+Not confirmed.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003fe: file kern/mm/mm.c, line 43.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:43
+$1 = 2
+$2 = 8192
+$3 = 33554432
+$4 = 33554432
+$5 = 4096
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x10040d: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+Breakpoint 3 at 0x1003f6: file kern/mm/mm.c, line 32.
+Continuing.
+
+Breakpoint 3, CalMemSize () at kern/mm/mm.c:32
+$1 = 31704
+$2 = 0
+$3 = 0
+$4 = 0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003fe: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+Breakpoint 3 at 0x1003f6: file kern/mm/mm.c, line 37.
+Continuing.
+
+Breakpoint 3, CalMemSize () at kern/mm/mm.c:37
+$1 = 0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003fe: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+$1 = 0
+1: /d i = 0
+1: /d i = 0
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+1: /d i = 1
+2: /x TolMemSize = 0x9fc00
+1: /d i = 1
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0xa0000
+1: /d i = 2
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x100000
+1: /d i = 3
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x1fe0000
+1: /d i = 4
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x2000000
+1: /d i = 5
+2: /x TolMemSize = 0x0
+2: /x TolMemSize = 0x0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x10040d: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+1: /d i = 1
+2: TolMemSize = 654336
+1: /d i = 1
+2: TolMemSize = 654336
+1: /d i = 1
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 655360
+1: /d i = 2
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 1048576
+1: /d i = 3
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33423360
+1: /d i = 4
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 33554432
+1: /d i = 5
+2: TolMemSize = 0
+2: TolMemSize = 0
+3: /x t = 0x1000a0
+4: /d npage = 31704
+2: TolMemSize = 0
+3: /x t = 0x0
+4: /d npage = 31704
+2: TolMemSize = 0
+3: /x t = 0x0
+4: /d npage = 0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100404: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100404: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+1: /x TolMemSize = 0x0
+2: /x MemSize = 0x0
+1: /x TolMemSize = 0x0
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x0
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x0
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0x400
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x TolMemSize = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0x10000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0x100000
+1: /x TolMemSize = 0xa0000
+2: /x MemSize = 0x100000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x100000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x100000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x100000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x1ee0000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x TolMemSize = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x20000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x TolMemSize = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x40000
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x0
+1: /x TolMemSize = 0x2000000
+2: /x MemSize = 0x0
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x1003de: file kern/mm/mm.c, line 44.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, page_init () at kern/mm/mm.c:44
+CalMemSize () at kern/mm/mm.c:12
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x0
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0x9fc00
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0xa0000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x100000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x1fe0000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+1: /x TolMemSize = 0x2000000
+2: /x t = 0x4f
+3: /d npage = 24
+1: /x TolMemSize = 0x2000000
+2: /x t = 0x2000000
+3: /d npage = 24
+1: /x TolMemSize = 0x2000000
+2: /x t = 0x2000000
+3: /d npage = 8192
+Please answer y or n.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+No symbol "BootEnd" in current context.
+No symbol "BootEnd" in current context.
+No symbol "edata" in current context.
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+'_myend' has unknown type; cast it to its declared type
+'_myend' has unknown type; cast it to its declared type
+1: /x _myend = <error: '_myend' has unknown type; cast it to its declared type>
+No symbol "edata" in current context.
+'_myend' has unknown type; cast it to its declared type
+'_myend' has unknown type; cast it to its declared type
+'_myend' has unknown type; cast it to its declared type
+1: /x _myend = <error: '_myend' has unknown type; cast it to its declared type>
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Function "page_init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100383: file kern/mm/mm.c, line 15.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/mm/mm.c:15
+Breakpoint 1 at 0x100000: file kern/init/init.c, line 4.
+Breakpoint 2 at 0x100383: file kern/mm/mm.c, line 15.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:4
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/mm/mm.c:15
+1: /x AddBegin = 0x0
+2: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x0
+2: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x0
+2: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x0
+2: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0x9fc00
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0x400
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0x9fc00
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0xa0000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x10000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0xf0000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x100000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1ee0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x100000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x1fe0000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x20000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0x1fe0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x2000000
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x40000
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x0
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x0
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x0
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x0
+1: /x AddBegin = 0xfffc0000
+2: /x MemSize = 0x0
+$1 = 0x2000000
