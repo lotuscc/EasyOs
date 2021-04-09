@@ -6,8 +6,6 @@
 #include "list.h"
 
 
-
-
 struct PageType{
     int count;
     uint32_t property;
@@ -18,12 +16,12 @@ struct PageType{
 
 
 
-#define ARDS_ADDRESS 0x8000                     // ARDS结构的物理地址
-#define PGSIZE          4096                    // bytes mapped by a page
+#define ARDS_ADDRESS    0x8000                     // ARDS结构的物理地址
+#define PGSIZE          4096                    // 页大小
 
+#define Page_Property_Allow  0                  // 内存可以使用
+#define Page_Property_Ban    1                  // 内存禁止使用，可以被映射为BIOS地址等作用，
 
-#define Page_Property_Allow  0
-#define Page_Property_Ban    1
 
 // 64位运算会出错
 
@@ -37,25 +35,29 @@ uint32_t CalMemSize(){
     uint32_t AddBegin = 0;
     uint32_t MemSize = 0;
 
+    // 遍历扫描每个memmap结构计算出总的物理内存
     for (int i = 0; i < memmap->n_map; i ++) {
-        AddBegin = memmap->map[i].addrLow;
-        MemSize = memmap->map[i].sizeLow;
+        AddBegin = memmap->map[i].addrLow;      // 起始地址  
+        MemSize = memmap->map[i].sizeLow;       // 大小
         
-        MemSize = MemSize + AddBegin; 
+        MemSize = MemSize + AddBegin;           // 内存结束地址等于起始地址+大小
 
-        if (TolMemSize < MemSize) {
-            TolMemSize = MemSize;
+        if (TolMemSize < MemSize) {             // 最大的结束地址即整个内存的大小
+            TolMemSize = MemSize;               
         }
 
-        if(memmap->map[i].type == E820_ARM){
-            EasyOS_PutStr("Yes\n", 0, 0);
-        }else{
-            EasyOS_PutStr("No\n", 0, 0);
-        }
+        // 判断内存是否为操作系统和用户可以内存
+        // if(memmap->map[i].type == E820_ARM){
+        //     EasyOS_PutStr("Yes\n", 0, 0);
+        // }else{
+        //     EasyOS_PutStr("No\n", 0, 0);
+        // }
     }
     return TolMemSize;
 }
 
+
+// 以4k向上取整
 uint32_t PageSizeRoundUp(uint32_t addr){
     uint32_t n_Size = addr / PGSIZE;
     if(addr % PGSIZE == 0){
@@ -65,6 +67,7 @@ uint32_t PageSizeRoundUp(uint32_t addr){
     return (n_Size + 1) * PGSIZE;
 }
 
+// 以4k向下取整
 uint32_t PageSizeRoundDown(uint32_t addr){
     uint32_t n_Size = addr / PGSIZE;
     if(addr % PGSIZE == 0){
@@ -78,10 +81,14 @@ uint32_t PageSizeRoundDown(uint32_t addr){
 /* pmm_init - initialize the physical memory management */
 void Page_Init(void) {
 
+
     uint32_t size = CalMemSize();
 
-    int N_Page = size / PGSIZE;
 
+    // 总共需要的页个数
+    int N_Page = size / PGSIZE;     
+
+    // 在链接脚本中设置，其地址为内核的结束地址
     extern char end[];
 
 
@@ -101,27 +108,34 @@ void Page_Init(void) {
     uint32_t AddBegin = 0;
     uint32_t MemSize = 0;
 
+
+    // 遍历整个memmap结构
     for (int i = 0; i < memmap->n_map; i ++) {
         AddBegin = memmap->map[i].addrLow;
         MemSize = memmap->map[i].sizeLow;
         
         MemSize = MemSize + AddBegin; 
 
-
+        // 判断是否为可用内存
         if(memmap->map[i].type == E820_ARM){
             
+            // 起始地址向下取整
             AddBegin = PageSizeRoundUp(AddBegin);                   
+            // 结束地址向上取整
             MemSize = PageSizeRoundDown(MemSize);
 
+            // 循环设置每个页
             while(AddBegin < MemSize){
                 
                 pageIt->begin_addr = AddBegin;
                 pageIt->end_addr = AddBegin + PGSIZE;
                 pageIt->count = 0;
                 
+                // 说明可以被使用
                 pageIt->property = Page_Property_Allow;
 
                 AddBegin += PGSIZE;
+                
                 // 链接到链表上
                 list_add(pageIt-1, pageIt);
                 
@@ -139,6 +153,7 @@ void Page_Init(void) {
                 pageIt->end_addr = AddBegin + PGSIZE;
                 pageIt->count = 0;
                 
+                // 说明禁止被使用
                 pageIt->property = Page_Property_Ban;
 
                 AddBegin += PGSIZE;
@@ -150,11 +165,7 @@ void Page_Init(void) {
 
             } 
         }
-        
-
-
     }
-
 }
 
 

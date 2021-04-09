@@ -32,6 +32,9 @@
 unsigned int SECTSIZE = 512;
 struct elfhdr *ELFHDR = ((struct elfhdr *)0x10000); // scratch space
 
+// struct elfhdr *ELFHDR = ((struct elfhdr *)0x7E00); // scratch space
+
+
 /* waitdisk - wait for disk ready */
 static void
 waitdisk(void)

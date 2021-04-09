@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "mm.h": "c",
-        "list.h": "c"
+        "list.h": "c",
+        "x86.h": "c"
     }
 }

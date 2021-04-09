@@ -12,6 +12,7 @@ Inc =	-Iboot \
 		-Ikern/init/ \
 		-Ikern/vga/ \
 		-Ikern/mm/ \
+		-Ikern/vmm/ \
 		-Ikern/libs/ 
 
 # first task
@@ -40,9 +41,12 @@ kernel:
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/mm/mm.c -o obj/kern/mm.o
 
+	$(CC) $(Inc) $(CFLAGS) -c kern/vmm/vmm.c -o obj/kern/vmm.o
+
 	$(LD) $(LDFLAGS) -T ./tools/kernel.ld -o ./bin/kernel  \
 		./obj/kern/init.o	\
 		./obj/kern/vga.o 	\
+		./obj/kern/vmm.o 	\
 		./obj/kern/mm.o 
 
 hd60M.img: boot kernel
