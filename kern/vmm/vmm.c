@@ -25,6 +25,8 @@ void Settest(void){
     // 将第x+1个4MB地址((3GB+4 - 3GB+8MB)) 映射到第2个页表
     DEFINE_SetPageItem(PageSetIt+0x301, 0x00102000, 0x7);
 
+
+
     // 设置第一个页表
     // 映射到 物理空间0-4MB 
     PageSetIt = (struct PageItem*)(0x00101000);
