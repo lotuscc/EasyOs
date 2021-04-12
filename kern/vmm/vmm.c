@@ -1,12 +1,17 @@
 #include "vmm.h"
 #include "x86.h"
 
+struct PageItem{
+    unsigned int addrAttributes;
+};
+
+
 #define DEFINE_SetPageItem(PageItemIt, addr, attributes) {               \
         (PageItemIt)->addrAttributes = (addr)&(0xFFFFF000) | (attributes)&(0xFFF);        \
     }
 
-    
-void Settest(void){
+
+static void vmmPageInit(void){
     struct PageItem* PageSetIt = (struct PageItem*)(0x00100000);
     // // 0x0010 1000
 
@@ -44,7 +49,7 @@ void Settest(void){
     }
 }
 
-void OpenPageing(void){
+static void vmmOpenPage(void){
     
     // 把页目录地址赋给cr3
     lcr3(0x00100000);
@@ -55,3 +60,8 @@ void OpenPageing(void){
     lcr0(cronum);
 }
 
+
+void vmm_init(void){
+    vmmPageInit();
+    vmmOpenPage();
+}

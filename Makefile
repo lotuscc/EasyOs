@@ -13,6 +13,7 @@ Inc =	-Iboot \
 		-Ikern/vga/ \
 		-Ikern/mm/ \
 		-Ikern/vmm/ \
+		-Ikern/driver/ \
 		-Ikern/libs/ 
 
 # first task
@@ -34,6 +35,9 @@ boot: sign
 	
 	./bin/sign ./obj/bootblock.out ./bin/bootblock
 
+
+# $(ASM) $(Inc) $(ASMFLAGS)  -c kern/driver/vector.S -o obj/kern/vector.o
+# $(ASM) $(Inc) $(ASMFLAGS)  -c kern/driver/trapentry.S -o obj/kern/trapentry.o
 kernel:
 	$(CC) $(Inc) $(CFLAGS) -c kern/init/init.c -o obj/kern/init.o
 
@@ -43,14 +47,28 @@ kernel:
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/vmm/vmm.c -o obj/kern/vmm.o
 
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/pic.c -o obj/kern/pic.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/idt.c -o obj/kern/idt.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/timer.c -o obj/kern/timer.o
+	
+	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.O
+
+	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/vector.S -o obj/kern/vector.O
+
 	$(LD) $(LDFLAGS) -T ./tools/kernel.ld -o ./bin/kernel  \
 		./obj/kern/init.o	\
 		./obj/kern/vga.o 	\
 		./obj/kern/vmm.o 	\
+		./obj/kern/pic.o 	\
+		./obj/kern/idt.o 	\
+		./obj/kern/trapentry.o 	\
+		./obj/kern/vector.o 	\
+		./obj/kern/timer.o 	\
 		./obj/kern/mm.o 
 
 hd60M.img: boot kernel
-	# dd if=/dev/zero of=./img/hd60M.img bs=1M count=60
 	dd if=./bin/bootblock of=./img/hd60M.img bs=512 count=1 conv=notrunc
 	dd if=./bin/kernel of=./img/hd60M.img seek=1 conv=notrunc
 

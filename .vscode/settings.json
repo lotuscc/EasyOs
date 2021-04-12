@@ -3,6 +3,12 @@
         "mm.h": "c",
         "list.h": "c",
         "x86.h": "c",
-        "defs.h": "c"
+        "defs.h": "c",
+        "pic.h": "c",
+        "vga.h": "c",
+        "elf.h": "c",
+        "vmm.h": "c",
+        "idt.h": "c",
+        "timer.h": "c"
     }
 }

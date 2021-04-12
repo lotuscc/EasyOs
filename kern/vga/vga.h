@@ -2,11 +2,7 @@
 #define __VGA_H__
 
 #include <elf.h>
-struct VGA_Color_Struct
-{
-    char Red; // 0x0c
-
-};
+#include "x86.h"
 
 // 80 * 25
 //////////////////////////////////////////////////  PosY
@@ -16,20 +12,20 @@ struct VGA_Color_Struct
 //X                                             //
 //////////////////////////////////////////////////
 
+// 字符缓冲区，在80*25模式下
+struct VgaDeviceStruct{
+    const char *name;   
+    void (*init)(void);
+    void (*refresh)(void);
+    void (*putChar)(char ch);
+    void (*putStr)(const char* str);
+    void (*putInt)(int num);
+    void (*clearScreen)(void);
+    void (*fillScreen)(char ch);
+};
 
-
-#define VGA_X_Max 25
-#define VGA_Y_Max 80
-
-
-int EasyOS_PutChar(char ch, int pos);
-int EasyOS_ClearScreen();
-int EasyOS_FillScreen(char ch);
-
-int EasyOS_PutChar_XY(char ch, int posx, int posy);
-int EasyOS_PutStr(char* str, int posx, int posy);
-int EasyOS_PutIntX(uint32_t data, int PosX, int PosY);
-int EasyOS_PutIntD(uint32_t data, int PosX, int PosY);
+extern const struct VgaDeviceStruct vgadevice;
+extern struct VgaDeviceStruct* vga;
 
 #endif /* !__VGA_H__ */
 

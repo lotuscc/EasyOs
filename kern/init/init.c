@@ -1,39 +1,51 @@
-#include <mm.h>
-#include <vga.h>
+#include "mm.h"
+#include "vga.h"
 #include "vmm.h"
+#include "pic.h"
+#include "timer.h"
 
 void dowhile(){
         /* do nothing */
     while (1);
 }
 
-int sub(int a, int b){
-    return a - b;
-}
-
 int kern_init(void) {
+
+    
 
     extern char etext[], edata[], end[];
 
-    int d = sub(20, 10);
+    vga->clearScreen();
 
-    EasyOS_PutIntX((uint32_t)etext, 0, 0);
-    EasyOS_PutIntX((uint32_t)edata, 2, 0);
-    EasyOS_PutIntX((uint32_t)end, 3, 0);
+    vga->putStr("etext: ");
+    vga->putInt(etext);
+    vga->putChar('\n');
 
+    vga->putStr("edata: ");
+    vga->putInt(edata);
+    vga->putChar('\n');
 
-    EasyOS_ClearScreen();
-    // EasyOS_FillScreen('a');
-    
-    // Page_Init();
+    vga->putStr("edata: ");
+    vga->putInt(end);
+    vga->putChar('\n');
 
-    Settest();
+    vga->putStr("Page init now\n");
     
-    OpenPageing();
     
-    int e = sub(20, 10);
+    Page_Init();
+
+    vmm_init();
     
-    EasyOS_PutStr("hello", 1, 0);
+    // 中断控制器初始化
+    pic_init();
+
+    //中断向量以及中断处理函数初始化 
+    idt_init();
+
+    // 时钟初始化
+    timer_init();
+    
+    asm volatile("sti");	     // 为演示中断处理,在此临时开中断
 
     dowhile();
 }

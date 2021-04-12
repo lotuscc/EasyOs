@@ -1,5 +1,9 @@
-Breakpoint 1 at 0x500000: file kern/init/init.c, line 4.
-Breakpoint 2 at 0x500383: file kern/mm/mm.c, line 30.
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400397: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x400453: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400167: file kern/vga/vga.c, line 100.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -7,242 +11,381 @@ Breakpoint 2 at 0x500383: file kern/mm/mm.c, line 30.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:4
-$1 = (void (*)()) 0x500006 <kern_init+6>
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=-125 '\203') at kern/vga/vga.c:100
+No symbol "os" in current context.
+$1 = 3599
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400397: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x400453: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400167: file kern/vga/vga.c, line 100.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=-125 '\203') at kern/vga/vga.c:100
+getCursorSite () at boot/x86.h:72
+$1 = 3584
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40039e: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x40045a: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x40016e: file kern/vga/vga.c, line 100.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=-118 '\212') at kern/vga/vga.c:100
+$1 = 3599
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40039e: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x40045a: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x40016e: file kern/vga/vga.c, line 100.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=-118 '\212') at kern/vga/vga.c:100
+$1 = 640
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400b93: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x4003f2: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x4004ae: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x4001c8: file kern/vga/vga.c, line 94.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=84 'T') at kern/vga/vga.c:94
+getCursorSite () at kern/vga/vga.c:51
+default_putChar (ch=99 'c') at kern/vga/vga.c:97
+$1 = 640
+basePutChar (ch=99 'c', pos=640) at kern/vga/vga.c:87
+$2 = 1891
+$3 = 0x763
+$4 = 640
+default_putChar (ch=99 'c') at kern/vga/vga.c:99
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400c23: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40048e: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x40054a: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x40022a: file kern/vga/vga.c, line 104.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=84 'T') at kern/vga/vga.c:104
+Breakpoint 7 at 0x40024f: file kern/vga/vga.c, line 109.
+Continuing.
+
+Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
+kern_init () at kern/init/init.c:43
+
+Breakpoint 5, default_putChar (ch=99 'c') at kern/vga/vga.c:104
+Continuing.
+
+Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
+kern_init () at kern/init/init.c:44
+
+Breakpoint 5, default_putChar (ch=99 'c') at kern/vga/vga.c:104
+Continuing.
+
+Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
+kern_init () at kern/init/init.c:46
+
+Breakpoint 5, default_putChar (ch=-44 '\324') at kern/vga/vga.c:104
+$1 = 643
+
+Breakpoint 7, default_putChar (ch=104 'h') at kern/vga/vga.c:109
+default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
+
+Breakpoint 5, default_putChar (ch=104 'h') at kern/vga/vga.c:104
+basePutChar (ch=101 'e', pos=644) at kern/vga/vga.c:89
+
+Breakpoint 7, default_putChar (ch=101 'e') at kern/vga/vga.c:109
+default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
+
+Breakpoint 5, default_putChar (ch=101 'e') at kern/vga/vga.c:104
+
+Breakpoint 7, default_putChar (ch=108 'l') at kern/vga/vga.c:109
+default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
+
+Breakpoint 5, default_putChar (ch=108 'l') at kern/vga/vga.c:104
+
+Breakpoint 7, default_putChar (ch=108 'l') at kern/vga/vga.c:109
+default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
+
+Breakpoint 5, default_putChar (ch=108 'l') at kern/vga/vga.c:104
+
+Breakpoint 7, default_putChar (ch=111 'o') at kern/vga/vga.c:109
+default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
+
+Breakpoint 5, default_putChar (ch=111 'o') at kern/vga/vga.c:104
+getCursorSite () at kern/vga/vga.c:51
+default_putChar (ch=10 '\n') at kern/vga/vga.c:107
+$2 = 648
+
+Breakpoint 7, default_putChar (ch=10 '\n') at kern/vga/vga.c:109
+Undefined command: "y".  Try "help".
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400a73: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400300: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x4003bc: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x4001ab: file kern/vga/vga.c, line 88.
+Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, default_putChar (ch=-44 '\324') at kern/vga/vga.c:88
+kern_init () at kern/init/init.c:46
+Undefined command: "qq".  Try "help".
+Please answer y or n.
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400a73: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400300: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x4003bc: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+kern_init () at kern/init/init.c:33
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400a83: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40031c: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x4003d8: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:6
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400a83: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40031c: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x4003d8: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+kern_init () at kern/init/init.c:33
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400388: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x400444: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+kern_init () at kern/init/init.c:33
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40038e: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x40044a: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+Continuing.
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Breakpoint 6 at 0x40047c: file kern/vmm/vmm.c, line 56.
+Continuing.
+
+Breakpoint 6, OpenPageing () at kern/vmm/vmm.c:56
+kern_init () at kern/init/init.c:33
+Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
+Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x40038e: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x40044a: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:17
+
+Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Continuing.
+
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:6
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
+Breakpoint 2 at 0x400bd3: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400468: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x400524: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:11
+Continuing.
 
 Breakpoint 2, CalMemSize () at kern/mm/mm.c:30
-Breakpoint 3 at 0x500404: file kern/mm/mm.c, line 56.
-Continuing.
-
-Breakpoint 3, CalMemSize () at kern/mm/mm.c:56
-Page_Init () at kern/mm/mm.c:89
-$2 = 33554432
-$3 = 0x2000000
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003d0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-$1 = (void (*)()) 0x5003cd <Settest+63>
-0x100000:	0x00740400
-kern_init () at kern/init/init.c:27
-0x100000:	0x00740400
-Continuing.
-
-Breakpoint 4, dowhile () at kern/init/init.c:5
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003d0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-0x100000:	0x00000000
-0x100000:	0x00000000
-0x100000:	0x00040400
-0x100000:	0x00740400
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003c4: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-0x100000:	0x00000000
-0x100000:	0xe0000101
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003a7: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-0x100000:	0x00000001
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003ad: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-$1 = 1
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003ad: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 6.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:6
-$1 = 1052679
-$2 = 0x101007
-0x100000:	0x00101007
-0x100004:	0x00000000
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003a7: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 10.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:10
-0x100000:	0x00101007
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5003d4: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x50038e: file kern/vmm/vmm.c, line 10.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:10
-0x100000:	0x00101007
-0x100020:	0x00000000
-A syntax error in expression, near `0x00100000'.
-0x100000:	0x00101007	0x00102007	0x00103007	0x00104007
-0x100000:	0x00101007	0x00102007	0x00103007	0x00104007
-0x100010:	0x00000000	0x00000000	0x00000000	0x00000000
-0x100020:	0x00000000
-0x100010:	0x00000000
-0x100020:	0x00000000	0x00000000	0x00000000	0x00000000
-0x100000:	0x00101007	0x00102007	0x00103007	0x00104007
-0x100002:	0x20070010	0x30070010	0x40070010	0x00000010
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004a8: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003bc: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Breakpoint 5 at 0x500475: file kern/vmm/vmm.c, line 43.
-Continuing.
-
-Breakpoint 5, Settest () at kern/vmm/vmm.c:43
-kern_init () at kern/init/init.c:26
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 5, Settest () at kern/vmm/vmm.c:43
-kern_init () at kern/init/init.c:26
-OpenPageing () at kern/vmm/vmm.c:49
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
 Continuing.
 
 Breakpoint 3, Settest () at kern/vmm/vmm.c:9
 Continuing.
 
-Breakpoint 5, Settest () at kern/vmm/vmm.c:43
-kern_init () at kern/init/init.c:26
-OpenPageing () at kern/vmm/vmm.c:49
-=> 0x500493 <OpenPageing+27>:	orl    $0x80000000,-0x4(%ebp)
-   0x50049a <OpenPageing+34>:	pushl  -0x4(%ebp)
-   0x50049d <OpenPageing+37>:	call   0x500393 <lcr0>
-   0x5004a2 <OpenPageing+42>:	add    $0x4,%esp
-   0x5004a5 <OpenPageing+45>:	nop
-Continuing.
+Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+kern_init () at kern/init/init.c:42
 
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 5, Settest () at kern/vmm/vmm.c:43
-kern_init () at kern/init/init.c:26
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 5, Settest () at kern/vmm/vmm.c:43
-kern_init () at kern/init/init.c:26
-OpenPageing () at kern/vmm/vmm.c:49
-=> 0x50047e <OpenPageing+6>:	push   $0x100000
-   0x500483 <OpenPageing+11>:	call   0x50039f <lcr3>
-   0x500488 <OpenPageing+16>:	add    $0x4,%esp
-   0x50048b <OpenPageing+19>:	call   0x5003ab <rcr0>
-   0x500490 <OpenPageing+24>:	mov    %eax,-0x4(%ebp)
-Please answer y or n.
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004a8: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003bc: file kern/vmm/vmm.c, line 26.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
+Breakpoint 5, dowhile () at kern/init/init.c:6
+Undefined command: "y".  Try "help".
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
+Breakpoint 2 at 0x400bd3: file kern/mm/mm.c, line 30.
+Breakpoint 3 at 0x400468: file kern/vmm/vmm.c, line 9.
+Breakpoint 4 at 0x400524: file kern/vmm/vmm.c, line 47.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -250,79 +393,22 @@ Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:26
-Breakpoint 5 at 0x500475: file kern/vmm/vmm.c, line 60.
-Continuing.
-
-Breakpoint 5, Settest () at kern/vmm/vmm.c:60
-kern_init () at kern/init/init.c:26
-OpenPageing () at kern/vmm/vmm.c:66
-=> 0x50047e <OpenPageing+6>:	push   $0x100000
-   0x500483 <OpenPageing+11>:	call   0x50039f <lcr3>
-   0x500488 <OpenPageing+16>:	add    $0x4,%esp
-   0x50048b <OpenPageing+19>:	call   0x5003ab <rcr0>
-   0x500490 <OpenPageing+24>:	mov    %eax,-0x4(%ebp)
-   0x50039f <lcr3>:	push   %ebp
-   0x5003a0 <lcr3+1>:	mov    %esp,%ebp
-   0x5003a2 <lcr3+3>:	mov    0x8(%ebp),%eax
-   0x5003a5 <lcr3+6>:	mov    %eax,%cr3
-   0x5003a8 <lcr3+9>:	nop
-   0x50039f <lcr3>:	push   %ebp
-   0x5003a0 <lcr3+1>:	mov    %esp,%ebp
-   0x5003a2 <lcr3+3>:	mov    0x8(%ebp),%eax
-   0x5003a5 <lcr3+6>:	mov    %eax,%cr3
-   0x5003a8 <lcr3+9>:	nop
-   0x5003a9 <lcr3+10>:	pop    %ebp
-   0x5003aa <lcr3+11>:	ret    
-   0x5003ab <rcr0>:	push   %ebp
-   0x5003ac <rcr0+1>:	mov    %esp,%ebp
-   0x5003ae <rcr0+3>:	sub    $0x10,%esp
-=> 0x50047e <OpenPageing+6>:	push   $0x100000
-   0x500483 <OpenPageing+11>:	call   0x50039f <lcr3>
-   0x500488 <OpenPageing+16>:	add    $0x4,%esp
-   0x50048b <OpenPageing+19>:	call   0x5003ab <rcr0>
-   0x500490 <OpenPageing+24>:	mov    %eax,-0x4(%ebp)
-Value can't be converted to integer.
-   0x5003ab <rcr0>:	push   %ebp
-   0x5003ac <rcr0+1>:	mov    %esp,%ebp
-   0x5003ae <rcr0+3>:	sub    $0x10,%esp
-   0x5003b1 <rcr0+6>:	mov    %cr0,%eax
-   0x5003b4 <rcr0+9>:	mov    %eax,-0x4(%ebp)
-   0x5003b7 <rcr0+12>:	mov    -0x4(%ebp),%eax
-   0x5003ba <rcr0+15>:	leave  
-   0x5003bb <rcr0+16>:	ret    
-   0x5003bc <Settest>:	push   %ebp
-   0x5003bd <Settest+1>:	mov    %esp,%ebp
-No symbol "cr3" in current context.
-No symbol "cr3" in current context.
-eax            0x100000            1048576
-ecx            0x8ff007            9433095
-edx            0x8ff007            9433095
-ebx            0x100b4             65716
-esp            0x7bc8              0x7bc8
-ebp            0x7bd8              0x7bd8
-esi            0x100b4             65716
-edi            0x807c              32892
-eip            0x50048b            0x50048b <OpenPageing+19>
-eflags         0x2                 [ ]
-cs             0x8                 8
-ss             0x10                16
-ds             0x10                16
-es             0x10                16
-fs             0x10                16
-gs             0x10                16
-=> 0x50048b <OpenPageing+19>:	call   0x5003ab <rcr0>
-   0x500490 <OpenPageing+24>:	mov    %eax,-0x4(%ebp)
-   0x500493 <OpenPageing+27>:	orl    $0x80000000,-0x4(%ebp)
-   0x50049a <OpenPageing+34>:	pushl  -0x4(%ebp)
-   0x50049d <OpenPageing+37>:	call   0x500393 <lcr0>
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 26.
-Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
+Breakpoint 1, kern_init () at kern/init/init.c:11
+'end' has unknown type; cast it to its declared type
+default_putInt (num=4198124) at kern/vga/vga.c:142
+$1 = 0x400eec
+Undefined command: "finsh".  Try "help".
+Run till exit from #0  default_putInt (num=4198124) at kern/vga/vga.c:144
+0x0040003e in kern_init () at kern/init/init.c:20
+default_putInt (num=4215524) at kern/vga/vga.c:142
+$2 = 0x4052e4
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
+Breakpoint 2 at 0x400b47: file kern/mm/mm.c, line 30.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400000: file kern/init/init.c, line 6.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -330,15 +416,14 @@ Breakpoint 4 at 0x500000: file kern/init/init.c, line 5.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:26
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 26.
-Breakpoint 4 at 0x50046c: file kern/vmm/vmm.c, line 62.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
+Breakpoint 1, kern_init () at kern/init/init.c:11
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 12.
+Breakpoint 2 at 0x400a74: file kern/mm/mm.c, line 30.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400000: file kern/init/init.c, line 7.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -346,432 +431,12 @@ Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:10
+Breakpoint 1, kern_init () at kern/init/init.c:12
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:26
+Breakpoint 2, CalMemSize () at kern/mm/mm.c:30
 Continuing.
 
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:62
-$1 = 0x11
-=> 0x500487 <OpenPageing+27>:	orl    $0x80000000,-0x4(%ebp)
-   0x50048e <OpenPageing+34>:	mov    -0x4(%ebp),%eax
-   0x500491 <OpenPageing+37>:	mov    %eax,%cr0
-   0x500494 <OpenPageing+40>:	movl   $0xa,-0x8(%ebp)
-   0x50049b <OpenPageing+47>:	movl   $0x14,-0xc(%ebp)
-OpenPageing () at kern/vmm/vmm.c:74
-$2 = 17
-$3 = 79
-$4 = (void (*)()) 0x500494 <OpenPageing+40>
-0x0000e05b in ?? ()
-Cannot find bounds of current function
-Cannot find bounds of current function
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004c1: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003bc: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x500478: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
+Breakpoint 3, dowhile () at kern/init/init.c:7
 Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x50046c: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-OpenPageing () at kern/vmm/vmm.c:75
-Undefined info command: "tlb".  Try "help info".
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x5004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x50046c: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-OpenPageing () at kern/vmm/vmm.c:75
-$1 = 17
-$2 = 79
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x500475: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x500431: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-OpenPageing () at kern/vmm/vmm.c:75
-Breakpoint 1 at 0x500005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x500475: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x5003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x500431: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x500000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-OpenPageing () at kern/vmm/vmm.c:75
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x400475: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x400431: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-OpenPageing () at kern/vmm/vmm.c:75
-Cannot access memory at address 0x7bbc
-0x0000e05b in ?? ()
-Breakpoint 1 at 0x40000b: file kern/init/init.c, line 15.
-Breakpoint 2 at 0x40047b: file kern/mm/mm.c, line 31.
-Breakpoint 3 at 0x4003b6: file kern/vmm/vmm.c, line 28.
-Breakpoint 4 at 0x400437: file kern/vmm/vmm.c, line 67.
-Breakpoint 5 at 0x400003: file kern/init/init.c, line 7.
-=> 0x8714:	add    %al,(%eax)
-   0x8716:	add    %al,(%eax)
-   0x8718:	add    %al,(%eax)
-   0x871a:	add    %al,(%eax)
-   0x871c:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:15
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:28
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:67
-OpenPageing () at kern/vmm/vmm.c:75
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x400475: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x400431: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-0x0000e05b in ?? ()
-$1 = (void (*)()) 0xe05b
-Cannot find bounds of current function
-Cannot find bounds of current function
-Breakpoint 1 at 0x40000b: file kern/init/init.c, line 15.
-Breakpoint 2 at 0x40047b: file kern/mm/mm.c, line 31.
-Breakpoint 3 at 0x4003b6: file kern/vmm/vmm.c, line 28.
-Breakpoint 4 at 0x400437: file kern/vmm/vmm.c, line 67.
-Breakpoint 5 at 0x400003: file kern/init/init.c, line 7.
-=> 0x69dc:	add    %al,(%eax)
-   0x69de:	add    %al,(%eax)
-   0x69e0:	add    %al,(%eax)
-   0x69e2:	add    %al,(%eax)
-   0x69e4:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:15
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:28
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:67
-$1 = (void (*)()) 0x400459 <OpenPageing+40>
-Cannot access memory at address 0x7bd0
-=> 0x400459 <OpenPageing+40>:	movl   $0xa,-0x8(%ebp)
-   0x400460 <OpenPageing+47>:	movl   $0x14,-0xc(%ebp)
-   0x400467 <OpenPageing+54>:	mov    -0x8(%ebp),%edx
-   0x40046a <OpenPageing+57>:	mov    -0xc(%ebp),%eax
-   0x40046d <OpenPageing+60>:	add    %edx,%eax
-$2 = (void *) 0x7bd8
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x4004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003b0: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x40046c: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-$1 = 10
-$2 = 1056768
-$3 = 20
-kern_init () at kern/init/init.c:31
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x4004c1: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003bc: file kern/vmm/vmm.c, line 27.
-Breakpoint 4 at 0x400478: file kern/vmm/vmm.c, line 63.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:27
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:63
-$1 = 10
-$2 = 1056768
-$3 = 20
-$4 = 30
-kern_init () at kern/init/init.c:31
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 10.
-Breakpoint 2 at 0x4004c1: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003bc: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400478: file kern/vmm/vmm.c, line 45.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:10
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:45
-$1 = 1024
-$2 = 10
-kern_init () at kern/init/init.c:31
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 14.
-Breakpoint 2 at 0x4004d4: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003e8: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4004a4: file kern/vmm/vmm.c, line 45.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:14
-=> 0x400010 <kern_init>:	push   %ebp
-   0x400011 <kern_init+1>:	mov    %esp,%ebp
-   0x400013 <kern_init+3>:	sub    $0x18,%esp
-   0x400016 <kern_init+6>:	push   $0xa
-   0x400018 <kern_init+8>:	push   $0x14
-=> 0x400010 <kern_init>:	push   %ebp
-   0x400011 <kern_init+1>:	mov    %esp,%ebp
-   0x400013 <kern_init+3>:	sub    $0x18,%esp
-   0x400016 <kern_init+6>:	push   $0xa
-   0x400018 <kern_init+8>:	push   $0x14
-   0x40001a <kern_init+10>:	call   0x400005 <sub>
-   0x40001f <kern_init+15>:	add    $0x8,%esp
-   0x400022 <kern_init+18>:	mov    %eax,-0xc(%ebp)
-   0x400025 <kern_init+21>:	mov    $0x4007ed,%eax
-   0x40002a <kern_init+26>:	sub    $0x4,%esp
-   0x400005 <sub>:	push   %ebp
-   0x400006 <sub+1>:	mov    %esp,%ebp
-   0x400008 <sub+3>:	mov    0x8(%ebp),%eax
-   0x40000b <sub+6>:	sub    0xc(%ebp),%eax
-   0x40000e <sub+9>:	pop    %ebp
-   0x40000f <sub+10>:	ret    
-=> 0x400010 <kern_init>:	push   %ebp
-   0x400011 <kern_init+1>:	mov    %esp,%ebp
-   0x400013 <kern_init+3>:	sub    $0x18,%esp
-   0x400016 <kern_init+6>:	push   $0xa
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 14.
-Breakpoint 2 at 0x4004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003bf: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40047b: file kern/vmm/vmm.c, line 45.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:14
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:45
-=> 0x400497 <OpenPageing+28>:	mov    %eax,-0x4(%ebp)
-   0x40049a <OpenPageing+31>:	orl    $0x80000000,-0x4(%ebp)
-   0x4004a1 <OpenPageing+38>:	mov    -0x4(%ebp),%eax
-   0x4004a4 <OpenPageing+41>:	mov    %eax,-0x8(%ebp)
-   0x4004a7 <OpenPageing+44>:	mov    -0x8(%ebp),%eax
-   0x40048d <OpenPageing+18>:	fmuls  (%edi)
-   0x40048f <OpenPageing+20>:	and    %al,%al
-   0x400491 <OpenPageing+22>:	mov    %eax,-0xc(%ebp)
-   0x400494 <OpenPageing+25>:	mov    -0xc(%ebp),%eax
-=> 0x400497 <OpenPageing+28>:	mov    %eax,-0x4(%ebp)
-   0x40049a <OpenPageing+31>:	orl    $0x80000000,-0x4(%ebp)
-   0x4004a1 <OpenPageing+38>:	mov    -0x4(%ebp),%eax
-   0x4004a4 <OpenPageing+41>:	mov    %eax,-0x8(%ebp)
-   0x4004a7 <OpenPageing+44>:	mov    -0x8(%ebp),%eax
-   0x4004aa <OpenPageing+47>:	mov    %eax,%cr0
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 14.
-Breakpoint 2 at 0x4004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003bf: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40047b: file kern/vmm/vmm.c, line 45.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:14
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:45
-=> 0x40047b <OpenPageing>:	push   %ebp
-   0x40047c <OpenPageing+1>:	mov    %esp,%ebp
-   0x40047e <OpenPageing+3>:	sub    $0x10,%esp
-   0x400481 <OpenPageing+6>:	movl   $0x100000,-0x10(%ebp)
-   0x400488 <OpenPageing+13>:	mov    -0x10(%ebp),%eax
-   0x40048b <OpenPageing+16>:	mov    %eax,%cr3
-   0x40048e <OpenPageing+19>:	mov    %cr0,%eax
-   0x400491 <OpenPageing+22>:	mov    %eax,-0xc(%ebp)
-   0x400494 <OpenPageing+25>:	mov    -0xc(%ebp),%eax
-   0x400497 <OpenPageing+28>:	mov    %eax,-0x4(%ebp)
-kern_init () at kern/init/init.c:34
-$1 = 10
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 14.
-Breakpoint 2 at 0x4004b0: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003bf: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40047b: file kern/vmm/vmm.c, line 45.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 5.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:14
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:45
-=> 0x40047b <OpenPageing>:	push   %ebp
-   0x40047c <OpenPageing+1>:	mov    %esp,%ebp
-   0x40047e <OpenPageing+3>:	sub    $0x10,%esp
-   0x400481 <OpenPageing+6>:	movl   $0x100000,-0x10(%ebp)
-   0x400488 <OpenPageing+13>:	mov    -0x10(%ebp),%eax
-   0x40048b <OpenPageing+16>:	mov    %eax,%cr3
-   0x40048e <OpenPageing+19>:	mov    %cr0,%eax
-   0x400491 <OpenPageing+22>:	mov    %eax,-0xc(%ebp)
-   0x400494 <OpenPageing+25>:	mov    -0xc(%ebp),%eax
-   0x400497 <OpenPageing+28>:	mov    %eax,-0x4(%ebp)
-   0x40049a <OpenPageing+31>:	orl    $0x80000000,-0x4(%ebp)
-   0x4004a1 <OpenPageing+38>:	mov    -0x4(%ebp),%eax
-   0x4004a4 <OpenPageing+41>:	mov    %eax,-0x8(%ebp)
-   0x4004a7 <OpenPageing+44>:	mov    -0x8(%ebp),%eax
-   0x4004aa <OpenPageing+47>:	mov    %eax,%cr0
-   0x4004ad <OpenPageing+50>:	nop
-   0x4004ae <OpenPageing+51>:	leave  
-   0x4004af <OpenPageing+52>:	ret    
-   0x4004b0 <CalMemSize>:	push   %ebp
-   0x4004b1 <CalMemSize+1>:	mov    %esp,%ebp
-kern_init () at kern/init/init.c:34
-$1 = 10
+[Inferior 1 (Remote target) exited normally]
