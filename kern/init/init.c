@@ -1,4 +1,3 @@
-#include "mm.h"
 #include "vga.h"
 #include "vmm.h"
 #include "pic.h"
@@ -32,8 +31,7 @@ int kern_init(void) {
     vga->putStr("Page init now\n");
     
     
-    Page_Init();
-
+    
     vmm_init();
     
     // 中断控制器初始化

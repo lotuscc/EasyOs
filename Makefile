@@ -43,8 +43,6 @@ kernel:
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/vga/vga.c -o obj/kern/vga.o
 
-	$(CC) $(Inc) $(CFLAGS) -c kern/mm/mm.c -o obj/kern/mm.o
-
 	$(CC) $(Inc) $(CFLAGS) -c kern/vmm/vmm.c -o obj/kern/vmm.o
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/pic.c -o obj/kern/pic.o
@@ -52,6 +50,12 @@ kernel:
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/idt.c -o obj/kern/idt.o
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/timer.c -o obj/kern/timer.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/string.c -o obj/kern/string.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/bitmap.c -o obj/kern/bitmap.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/memory.c -o obj/kern/memory.o
 	
 	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.O
 
@@ -66,7 +70,9 @@ kernel:
 		./obj/kern/trapentry.o 	\
 		./obj/kern/vector.o 	\
 		./obj/kern/timer.o 	\
-		./obj/kern/mm.o 
+		./obj/kern/string.o 	\
+		./obj/kern/bitmap.o 	\
+		./obj/kern/memory.o 	
 
 hd60M.img: boot kernel
 	dd if=./bin/bootblock of=./img/hd60M.img bs=512 count=1 conv=notrunc
