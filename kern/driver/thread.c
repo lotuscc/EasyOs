@@ -1,6 +1,7 @@
 #include "thread.h"
 #include "string.h"
 #include "memory.h"
+#include "vga.h"
 
 // struct task_struct* main_thread;       // 主线程PCB
 // struct list thread_ready_list;	      // 就绪队列
@@ -159,30 +160,34 @@ extern void switch_to(struct context *from, struct context *to);
 //     make_main_thread();
 // }
 
-void eos_proc_init(void){
-   list_init(&proc_ready_listHead.entry);
-   list_init(&proc_all_listHead.entry);
-
-   proc_all_listHead.proc_nums = 0;
-   proc_ready_listHead.proc_nums = 0;
-
-}
 
 void eos_proc_create(struct proc_struct* proc, thread_func func, void* func_arg){
    memset(proc, 0, sizeof(struct proc_struct));
    
+   proc->context.eip = func;
+
 }
 
 
 struct proc_struct* eos_proc_start(char* name, int prio, thread_func function, void* func_arg){
    // PCB 使用一页大小,并且位于页低端
    struct proc_struct* proc = get_kernel_pages(1);
-   strcpy(proc->name, name);
-   proc->priority = prio;
 
    eos_proc_create(proc, function, func_arg);
 
+   strcpy(proc->name, name);
+   proc->priority = prio;
+
+   proc->state = TASK_READY;
+
+   proc->kstack = (uint32_t)proc + 4096 - 4;
+
+   proc->context.esp = (uint32_t)proc + 4092;
+
+   ++proc_all_listHead.proc_nums;
    list_add(&proc_all_listHead.entry, &proc->all_link);
+   
+   ++proc_ready_listHead.proc_nums;
    list_add(&proc_ready_listHead.entry, &proc->ready_link);
 
    return proc;
@@ -192,18 +197,26 @@ struct  proc_struct* eos_running_proc(void){
    uint32_t esp; 
    asm ("mov %%esp, %0" : "=g" (esp));
    // 取esp整数部分即pcb起始地址
+
    return (struct proc_struct*)(esp & 0xfffff000);
 }
 
 void eos_schedule(void){
    struct proc_struct* cur = eos_running_proc(); 
    if (cur->state == TASK_RUNNING) { // 若此线程只是cpu时间片到了,将其加入到就绪队列尾
-            
+      // 如果在
+      if(cur->ready_link.next != NULL){
+         list_del(&cur->ready_link);  
+      }
+
       proc_ready_listHead.proc_nums++;
-      list_add(&proc_ready_listHead.entry.prev, &cur->ready_link);
+      
       
       cur->ticks = cur->priority;     // 重新将当前线程的ticks再重置为其priority;
       cur->state = TASK_READY;
+
+      list_add(proc_ready_listHead.entry.prev, &cur->ready_link);
+
    } else { 
       /* 若此线程需要某事件发生后才能继续上cpu运行,
       不需要将其加入队列,因为当前线程不在就绪队列中。*/
@@ -213,8 +226,13 @@ void eos_schedule(void){
    if (proc_ready_listHead.proc_nums != 0){
       struct list_entry_t* t = proc_ready_listHead.entry.next;
 
-      struct proc_struct* next = elem2entry();
+
+      struct proc_struct* next = le2proc(t, ready_link);
       next->state = TASK_RUNNING;
+      next->ticks = next->priority;
+
+      
+
 
       switch_to(&cur->context, &next->context);
    }
@@ -231,4 +249,63 @@ void eos_schedule(void){
    // process_activate(next);
 
    // switch_to(cur, next);
+}
+
+
+// 将kernel中的main函数完善为主线程
+static void make_main_thread(void) {
+// 因为main线程早已运行,咱们在loader.S中进入内核时的mov esp,0xc009f000,
+// 就是为其预留了tcb,地址为0xc009e000,因此不需要通过get_kernel_page另分配一页*/
+   struct proc_struct* main_thread = eos_running_proc();
+   strcpy(main_thread->name, "main");
+   main_thread->priority = 31;
+
+   main_thread->state = TASK_RUNNING;
+
+// main函数是当前线程,当前线程不在thread_ready_list中,
+// 所以只将其加在thread_all_list中. */
+
+   proc_all_listHead.proc_nums++;
+   list_add(&proc_all_listHead.entry, &main_thread->all_link);
+
+}
+
+
+void eos_proc_init(void){
+   list_init(&proc_ready_listHead.entry);
+   list_init(&proc_all_listHead.entry);
+
+   proc_all_listHead.proc_nums = 0;
+   proc_ready_listHead.proc_nums = 0;
+
+   make_main_thread();
+}
+
+void debug_all_list(void){
+   struct list_entry_t* head = &proc_all_listHead.entry;
+   struct list_entry_t* it = head->next;
+   while(it  != head){
+      vga->putStr("proc: ");
+
+      struct proc_struct* t =  le2proc(it, all_link);
+      vga->putStr(t->name);
+      vga->putChar(' ');
+
+      it = it->next;
+   }
+}
+
+
+void debug_ready_list(void){
+   struct list_entry_t* head = &proc_ready_listHead.entry;
+   struct list_entry_t* it = head->next;
+   while(it  != head){
+      vga->putStr("proc: ");
+
+      struct proc_struct* t =  le2proc(it, ready_link);
+      vga->putStr(t->name);
+      vga->putChar(' ');
+
+      it = it->next;
+   }
 }

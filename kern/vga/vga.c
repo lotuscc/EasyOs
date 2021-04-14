@@ -61,9 +61,11 @@ static void scrollScreen(void){
 static void base_putchar(char ch, int pos){
     
     if(pos >= 80 * 25){   
-        scrollScreen();
-        pos -= pos % 80;
-        pos -= 80;
+        // scrollScreen();
+        // pos -= pos % 80;
+        // pos -= 80;
+
+        pos = 0;
     }
     
 

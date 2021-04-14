@@ -90,6 +90,7 @@ static void trap_dispatch(struct trapframe *tf) {
     switch (tf->tf_trapno) {
         case T_PGFLT:  //page fault
         /* do nothing */
+            vga->putStr("Pagr error! \n");
         break;
 
         case T_SYSCALL:    // system call 系统调用
@@ -99,10 +100,10 @@ static void trap_dispatch(struct trapframe *tf) {
         case IRQ_OFFSET + IRQ_TIMER: // IRQ0 时钟中断
         /* do nothing */
             ticks++;
-            vga->putInt(tf->tf_trapno);
-            vga->putStr(" timer trap! ");
-            vga->putInt(ticks);
-            vga->putChar(' ');
+            // vga->putInt(tf->tf_trapno);
+            // vga->putStr(" timer trap! ");
+            // vga->putInt(ticks);
+            // vga->putChar(' ');
 
             struct proc_struct* cur = eos_running_proc();
             if (cur->ticks-- == 0){

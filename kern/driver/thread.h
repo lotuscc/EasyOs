@@ -172,7 +172,7 @@ struct proc_struct {
    
    // 每次在处理器上执行的时间嘀嗒数
    uint32_t ticks;	  
-
+   uint32_t stack_magic;	 
 };
 
 
@@ -180,6 +180,10 @@ struct proc_head{
    int proc_nums;
    struct list_entry_t entry;
 };
+
+// 宏定义，将list_entry_t类型指针转化为特定类型指针，用于访问特定类型中的数据
+#define le2proc(le, member)                 \
+to_struct((le), struct proc_struct, member)
 
 struct proc_head proc_ready_listHead;
 struct proc_head proc_all_listHead;

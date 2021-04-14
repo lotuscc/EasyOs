@@ -1,9 +1,12 @@
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400397: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400453: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400167: file kern/vga/vga.c, line 100.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401dbe: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 5 at 0x40084c: file kern/driver/idt.c, line 88.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -11,24 +14,25 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Breakpoint 4, dowhile () at kern/init/init.c:8
 Continuing.
 
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, default_putChar (ch=-125 '\203') at kern/vga/vga.c:100
-No symbol "os" in current context.
-$1 = 3599
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400397: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400453: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400167: file kern/vga/vga.c, line 100.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+$1 = (struct proc_struct *) 0x7000
+$2 = 1
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e91: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 5 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 6 at 0x401c8f: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -36,24 +40,50 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Breakpoint 4, dowhile () at kern/init/init.c:8
 Continuing.
 
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+$1 = 1
+$2 = 4294967295
 
-Breakpoint 5, default_putChar (ch=-125 '\203') at kern/vga/vga.c:100
-getCursorSite () at boot/x86.h:72
-$1 = 3584
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40039e: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40045a: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x40016e: file kern/vga/vga.c, line 100.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 6, eos_schedule () at kern/driver/thread.c:198
+$3 = (struct proc_struct *) 0x7000
+$4 = 0
+switch_to () at kern/driver/switch.S:6
+A syntax error in expression, near `%eax)'.
+   0x7b0c:	push   %esi
+   0x7b0d:	sbb    $0x700c0040,%eax
+Stack level 0, frame at 0x7b10:
+ eip = 0x401e49 in switch_to (kern/driver/switch.S:8); saved eip = 0x401d56
+ called by frame at 0x7b50
+ source language asm.
+ Arglist at 0x7b08, args: 
+ Locals at 0x7b08, Previous frame's sp is 0x7b10
+ Saved registers:
+  eip at 0x7b0c
+switch_to () at kern/driver/switch.S:10
+switch_to () at kern/driver/switch.S:29
+0x0000e05b in ?? ()
+Cannot find bounds of current function
+Cannot find bounds of current function
+Cannot find bounds of current function
+Cannot find bounds of current function
+Cannot find bounds of current function
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e91: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b78: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c8f: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -61,23 +91,30 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, default_putChar (ch=-118 '\212') at kern/vga/vga.c:100
-$1 = 3599
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400b33: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40039e: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40045a: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x40016e: file kern/vga/vga.c, line 100.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 4, eos_proc_start (name=0x40243f "th1", prio=20, function=0x40012f <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+$1 = (struct proc_struct *) 0x0
+$2 = {state = 4026597203, pid = -268370093, kstack = 4026589891, context = {eip = 4026597203, 
+    esp = 4026597203, ebx = 4026597204, ecx = 4026597203, edx = 4026597203, esi = 4026597029, 
+    edi = 4026591623, ebp = 4026586144}, tf = 0xf000d420, cr3 = 4026586144, 
+  name = " \324\000\360W\357\000\360 \324\000\360\063U\000\300", exit_code = -268371891, ready_link = {
+    prev = 0xf000f841, next = 0xf000e3fe}, all_link = {prev = 0xf000e739, next = 0xf000f859}, 
+  priority = 4026591278, ticks = 4026593234, stack_magic = 4026586181}
+$3 = (struct proc_struct *) 0x0
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e91: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b78: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c8f: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -85,23 +122,25 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, default_putChar (ch=-118 '\212') at kern/vga/vga.c:100
-$1 = 640
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400b93: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x4003f2: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4004ae: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x4001c8: file kern/vga/vga.c, line 94.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 4, eos_proc_start (name=0x40243f "th1", prio=20, function=0x40012f <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:220
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:192
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:72
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e91: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b78: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40084c: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c8f: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -109,30 +148,28 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, default_putChar (ch=84 'T') at kern/vga/vga.c:94
-getCursorSite () at kern/vga/vga.c:51
-default_putChar (ch=99 'c') at kern/vga/vga.c:97
-$1 = 640
-basePutChar (ch=99 'c', pos=640) at kern/vga/vga.c:87
-$2 = 1891
-$3 = 0x763
-$4 = 640
-default_putChar (ch=99 'c') at kern/vga/vga.c:99
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400c23: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40048e: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40054a: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x40022a: file kern/vga/vga.c, line 104.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 4, eos_proc_start (name=0x40243f "th1", prio=20, function=0x40012f <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:220
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:192
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:72
+bitmap_scan (btmp=0x40dc4c <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:19
+$1 = 65716
+$2 = 0
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e96: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400851: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b7d: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400851: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c94: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -140,74 +177,35 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
 Continuing.
 
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, default_putChar (ch=84 'T') at kern/vga/vga.c:104
-Breakpoint 7 at 0x40024f: file kern/vga/vga.c, line 109.
-Continuing.
-
-Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
-kern_init () at kern/init/init.c:43
-
-Breakpoint 5, default_putChar (ch=99 'c') at kern/vga/vga.c:104
-Continuing.
-
-Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
-kern_init () at kern/init/init.c:44
-
-Breakpoint 5, default_putChar (ch=99 'c') at kern/vga/vga.c:104
-Continuing.
-
-Breakpoint 7, default_putChar (ch=99 'c') at kern/vga/vga.c:109
-kern_init () at kern/init/init.c:46
-
-Breakpoint 5, default_putChar (ch=-44 '\324') at kern/vga/vga.c:104
-$1 = 643
-
-Breakpoint 7, default_putChar (ch=104 'h') at kern/vga/vga.c:109
-default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
-
-Breakpoint 5, default_putChar (ch=104 'h') at kern/vga/vga.c:104
-basePutChar (ch=101 'e', pos=644) at kern/vga/vga.c:89
-
-Breakpoint 7, default_putChar (ch=101 'e') at kern/vga/vga.c:109
-default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
-
-Breakpoint 5, default_putChar (ch=101 'e') at kern/vga/vga.c:104
-
-Breakpoint 7, default_putChar (ch=108 'l') at kern/vga/vga.c:109
-default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
-
-Breakpoint 5, default_putChar (ch=108 'l') at kern/vga/vga.c:104
-
-Breakpoint 7, default_putChar (ch=108 'l') at kern/vga/vga.c:109
-default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
-
-Breakpoint 5, default_putChar (ch=108 'l') at kern/vga/vga.c:104
-
-Breakpoint 7, default_putChar (ch=111 'o') at kern/vga/vga.c:109
-default_putStr (str=0x400f42 "hello\n") at kern/vga/vga.c:114
-
-Breakpoint 5, default_putChar (ch=111 'o') at kern/vga/vga.c:104
-getCursorSite () at kern/vga/vga.c:51
-default_putChar (ch=10 '\n') at kern/vga/vga.c:107
-$2 = 648
-
-Breakpoint 7, default_putChar (ch=10 '\n') at kern/vga/vga.c:109
-Undefined command: "y".  Try "help".
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400a73: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400300: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4003bc: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x4001ab: file kern/vga/vga.c, line 88.
-Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 4, eos_proc_start (name=0x40245f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:220
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:192
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:72
+bitmap_scan (btmp=0x40dc4c <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:19
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:79
+bitmap_set (btmp=0x40dc4c <kernel_vaddr>, bit_idx=0, value=0 '\000') at kern/driver/bitmap.c:68
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:82
+$1 = 0
+$2 = -1072693248
+$3 = 0xc0100000
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401e96: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400851: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b7d: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400851: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c94: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -215,200 +213,104 @@ Breakpoint 6 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:17
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
 Continuing.
 
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
+Breakpoint 4, eos_proc_start (name=0x40243f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:220
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:192
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:72
+bitmap_scan (btmp=0x40dc4c <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:19
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:79
+bitmap_set (btmp=0x40dc4c <kernel_vaddr>, bit_idx=0, value=0 '\000') at kern/driver/bitmap.c:68
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:82
+$1 = 0xc0100000
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:193
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:132
+bitmap_scan (btmp=0x40dc58 <kernel_pool>, cnt=1) at kern/driver/bitmap.c:19
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:133
+bitmap_set (btmp=0x40dc58 <kernel_pool>, bit_idx=0, value=0 '\000') at kern/driver/bitmap.c:68
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:138
+$2 = 0x500000
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:205
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+trap (tf=0x7a9c) at kern/driver/idt.c:144
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+__trapret () at kern/driver/trapentry.S:35
+__trapret () at kern/driver/trapentry.S:36
+__trapret () at kern/driver/trapentry.S:37
+__trapret () at kern/driver/trapentry.S:38
+__trapret () at kern/driver/trapentry.S:43
+__trapret () at kern/driver/trapentry.S:44
+vector14 () at kern/driver/vector.S:71
+__alltraps () at kern/driver/trapentry.S:8
+__alltraps () at kern/driver/trapentry.S:9
+__alltraps () at kern/driver/trapentry.S:10
+__alltraps () at kern/driver/trapentry.S:11
+__alltraps () at kern/driver/trapentry.S:12
+__alltraps () at kern/driver/trapentry.S:20
+__alltraps () at kern/driver/trapentry.S:23
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+trap (tf=0x7a9c) at kern/driver/idt.c:144
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+__trapret () at kern/driver/trapentry.S:35
+__trapret () at kern/driver/trapentry.S:36
+__trapret () at kern/driver/trapentry.S:37
+__trapret () at kern/driver/trapentry.S:38
+__trapret () at kern/driver/trapentry.S:43
+__trapret () at kern/driver/trapentry.S:44
+vector14 () at kern/driver/vector.S:71
+__alltraps () at kern/driver/trapentry.S:8
+__alltraps () at kern/driver/trapentry.S:9
+__alltraps () at kern/driver/trapentry.S:10
+__alltraps () at kern/driver/trapentry.S:11
+__alltraps () at kern/driver/trapentry.S:12
+__alltraps () at kern/driver/trapentry.S:20
+__alltraps () at kern/driver/trapentry.S:23
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
 Continuing.
 
-Breakpoint 5, default_putChar (ch=-44 '\324') at kern/vga/vga.c:88
-kern_init () at kern/init/init.c:46
-Undefined command: "qq".  Try "help".
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+Ambiguous command "m": macro, maintenance, make, mem, monitor, mt.
+trap (tf=0x7a9c) at kern/driver/idt.c:144
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
+trap (tf=0x7a9c) at kern/driver/idt.c:144
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+__trapret () at kern/driver/trapentry.S:35
+__trapret () at kern/driver/trapentry.S:36
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7a9c) at kern/driver/idt.c:88
 Please answer y or n.
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400a73: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400300: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4003bc: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-kern_init () at kern/init/init.c:33
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400a83: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40031c: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4003d8: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, dowhile () at kern/init/init.c:6
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400a83: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40031c: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x4003d8: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-kern_init () at kern/init/init.c:33
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400388: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400444: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-kern_init () at kern/init/init.c:33
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40038e: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40044a: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Breakpoint 6 at 0x40047c: file kern/vmm/vmm.c, line 56.
-Continuing.
-
-Breakpoint 6, OpenPageing () at kern/vmm/vmm.c:56
-kern_init () at kern/init/init.c:33
-Breakpoint 1 at 0x400010: file kern/init/init.c, line 17.
-Breakpoint 2 at 0x400af3: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x40038e: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x40044a: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:17
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-Continuing.
-
-Breakpoint 5, dowhile () at kern/init/init.c:6
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
-Breakpoint 2 at 0x400bd3: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400468: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400524: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:11
-Continuing.
-
-Breakpoint 2, CalMemSize () at kern/mm/mm.c:30
-Continuing.
-
-Breakpoint 3, Settest () at kern/vmm/vmm.c:9
-Continuing.
-
-Breakpoint 4, OpenPageing () at kern/vmm/vmm.c:47
-kern_init () at kern/init/init.c:42
-
-Breakpoint 5, dowhile () at kern/init/init.c:6
-Undefined command: "y".  Try "help".
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
-Breakpoint 2 at 0x400bd3: file kern/mm/mm.c, line 30.
-Breakpoint 3 at 0x400468: file kern/vmm/vmm.c, line 9.
-Breakpoint 4 at 0x400524: file kern/vmm/vmm.c, line 47.
-Breakpoint 5 at 0x400000: file kern/init/init.c, line 6.
-=> 0xfff0:	add    %al,(%eax)
-   0xfff2:	add    %al,(%eax)
-   0xfff4:	add    %al,(%eax)
-   0xfff6:	add    %al,(%eax)
-   0xfff8:	add    %al,(%eax)
-Continuing.
-
-Breakpoint 1, kern_init () at kern/init/init.c:11
-'end' has unknown type; cast it to its declared type
-default_putInt (num=4198124) at kern/vga/vga.c:142
-$1 = 0x400eec
-Undefined command: "finsh".  Try "help".
-Run till exit from #0  default_putInt (num=4198124) at kern/vga/vga.c:144
-0x0040003e in kern_init () at kern/init/init.c:20
-default_putInt (num=4215524) at kern/vga/vga.c:142
-$2 = 0x4052e4
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 11.
-Breakpoint 2 at 0x400b47: file kern/mm/mm.c, line 30.
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401eb7: file kern/driver/memory.c, line 45.
 Function "Settest" not defined.
 Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
 Function "OpenPageing" not defined.
 Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
-Breakpoint 3 at 0x400000: file kern/init/init.c, line 6.
+Breakpoint 3 at 0x40085f: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b9e: file kern/driver/thread.c, line 171.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40085f: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cb5: file kern/driver/thread.c, line 198.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -416,14 +318,128 @@ Breakpoint 3 at 0x400000: file kern/init/init.c, line 6.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:11
-Breakpoint 1 at 0x400005: file kern/init/init.c, line 12.
-Breakpoint 2 at 0x400a74: file kern/mm/mm.c, line 30.
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40245f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:220
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:192
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:72
+bitmap_scan (btmp=0x40dc4c <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:19
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:79
+bitmap_set (btmp=0x40dc4c <kernel_vaddr>, bit_idx=0, value=0 '\000') at kern/driver/bitmap.c:68
+vaddr_get (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:82
+$1 = 0xc0800000
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:193
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:132
+bitmap_scan (btmp=0x40dc58 <kernel_pool>, cnt=1) at kern/driver/bitmap.c:19
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:133
+bitmap_set (btmp=0x40dc58 <kernel_pool>, bit_idx=0, value=0 '\000') at kern/driver/bitmap.c:68
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:138
+$2 = 8388608
+$3 = 0x800000
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:205
+page_table_add (_vaddr=0xc0800000, _page_phyaddr=0x800000) at kern/driver/memory.c:144
+pde_ptr (vaddr=3229614080) at kern/driver/memory.c:123
+page_table_add (_vaddr=0xc0800000, _page_phyaddr=0x800000) at kern/driver/memory.c:146
+pte_ptr (vaddr=3229614080) at kern/driver/memory.c:114
+page_table_add (_vaddr=0xc0800000, _page_phyaddr=0x800000) at kern/driver/memory.c:155
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:132
+bitmap_scan (btmp=0x40dc58 <kernel_pool>, cnt=1) at kern/driver/bitmap.c:19
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:133
+bitmap_set (btmp=0x40dc58 <kernel_pool>, bit_idx=1, value=0 '\000') at kern/driver/bitmap.c:68
+palloc (m_pool=0x40dc58 <kernel_pool>) at kern/driver/memory.c:138
+page_table_add (_vaddr=0xc0800000, _page_phyaddr=0x800000) at kern/driver/memory.c:170
+memset (s=0xfff02000, c=1 '\001', n=4096) at kern/driver/string.c:286
+page_table_add (_vaddr=0xc0800000, _page_phyaddr=0x800000) at kern/driver/memory.c:180
+malloc_page (pf=PF_KERNEL, pg_cnt=1) at kern/driver/memory.c:210
+Undefined info command: "tlb".  Try "help info".
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:221
+memset (s=0xc0800000, c=0 '\000', n=4096) at kern/driver/string.c:286
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:227
+$4 = 0xc0800000
+eos_proc_start (name=0x40245f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:175
+eos_proc_create (proc=0xc0800000, func=0x400134 <hello1>, func_arg=0x0) at kern/driver/thread.c:164
+memset (s=0xc0800000, c=0 '\000', n=100) at kern/driver/string.c:286
+eos_proc_create (proc=0xc0800000, func=0x400134 <hello1>, func_arg=0x0) at kern/driver/thread.c:166
+$5 = (thread_func *) 0x400134 <hello1>
+$6 = (thread_func *) 0x400134 <hello1>
+eos_proc_start (name=0x40245f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:177
+$7 = (struct proc_struct *) 0xc0800000
+$8 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194612, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0x0, next = 0x0}, all_link = {prev = 0x0, next = 0x0}, 
+  priority = 20, ticks = 0, stack_magic = 0}
+$9 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194612, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0x0, next = 0x0}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0x7050}, priority = 20, ticks = 0, stack_magic = 0}
+kern_init () at kern/init/init.c:56
+
+Breakpoint 4, eos_proc_start (name=0x40245f "th1", prio=20, function=0x400134 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:171
+$10 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194612, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 0, stack_magic = 0}
+kern_init () at kern/init/init.c:58
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+$11 = (struct proc_struct *) 0x7000
+$12 = {state = TASK_RUNNING, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x0, next = 0x0}, all_link = {prev = 0xc0800050, 
+    next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 0, stack_magic = 0}
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:198
+$13 = (struct proc_struct *) 0x7000
+$14 = {state = TASK_RUNNING, pid = 0, kstack = 1, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, 
+  name = "\230{\000\000\000\000\000\000main\000\000\000", exit_code = 0, ready_link = {prev = 0x0, 
+    next = 0x0}, all_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}, 
+  priority = 3229614160, ticks = 3229614160, stack_magic = 31}
+$15 = (struct proc_struct *) 0x6ff8
+$16 = (struct list_entry_t *) 0x7048
+$17 = (struct proc_struct *) 0x7000
+$18 = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffffa0>)
+    at kern/driver/idt.c:88
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff70>)
+    at kern/vga/vga.c:103
+getCursorSite () at kern/vga/vga.c:25
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffffa0>)
+    at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffffa0>)
+    at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffffa0>)
+    at kern/driver/idt.c:88
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f2f: file kern/driver/memory.c, line 45.
 Function "Settest" not defined.
 Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
 Function "OpenPageing" not defined.
 Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
-Breakpoint 3 at 0x400000: file kern/init/init.c, line 7.
+Breakpoint 3 at 0x400864: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401ba3: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400864: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cba: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401e70: file kern/driver/thread.c, line 269.
 => 0xfff0:	add    %al,(%eax)
    0xfff2:	add    %al,(%eax)
    0xfff4:	add    %al,(%eax)
@@ -431,12 +447,1129 @@ Breakpoint 3 at 0x400000: file kern/init/init.c, line 7.
    0xfff8:	add    %al,(%eax)
 Continuing.
 
-Breakpoint 1, kern_init () at kern/init/init.c:12
+Breakpoint 1, kern_init () at kern/init/init.c:16
 Continuing.
 
-Breakpoint 2, CalMemSize () at kern/mm/mm.c:30
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
 Continuing.
 
-Breakpoint 3, dowhile () at kern/init/init.c:7
+Breakpoint 4, eos_proc_start (name=0x4024df "th1", prio=20, function=0x400139 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024df "th1", prio=20, function=0x400156 <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_list () at kern/driver/thread.c:269
+$1 = (struct list_entry_t *) 0x40dc24 <proc_all_listHead+4>
+$2 = (struct proc_struct *) 0x210311
+$3 = (struct list_entry_t *) 0xc0801050
+$4 = {prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}
+$5 = (struct proc_struct *) 0xc0801000
+$6 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194646, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 0, stack_magic = 0}
+$7 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194617, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0xc0801048, next = 0x40dc30 <proc_ready_listHead+4>}, all_link = {
+    prev = 0xc0801050, next = 0x7050}, priority = 20, ticks = 0, stack_magic = 0}
+kern_init () at kern/init/init.c:60
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f2f: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400864: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401ba3: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400864: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cba: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401e70: file kern/driver/thread.c, line 269.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024df "th1", prio=20, function=0x400139 <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024df "th1", prio=20, function=0x400156 <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_list () at kern/driver/thread.c:269
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:8
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+$1 = {state = TASK_RUNNING, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b94, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}, all_link = {
+    prev = 0xc0800050, next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 31, stack_magic = 0}
+$2 = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}
+$3 = {state = TASK_RUNNING, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b94, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}, all_link = {
+    prev = 0xc0800050, next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 31, stack_magic = 0}
+$4 = 3
+$5 = (struct list_entry_t *) 0x7048
+Please answer y or n.
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401fa7: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401ba8: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cbf: file kern/driver/thread.c, line 199.
+Function "debug_list" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40255f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40255f "th1", prio=20, function=0x40015b <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:8
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401fa7: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401ba8: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cbf: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401ee8: file kern/driver/thread.c, line 284.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40255f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40255f "th1", prio=20, function=0x40015b <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:284
+$1 = {prev = 0xc0800048, next = 0xc0801048}
+kern_init () at kern/init/init.c:62
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+$2 = (struct list_entry_t *) 0xc0800048
+$3 = (struct proc_struct *) 0x7000
+$4 = (struct list_entry_t *) 0x7048
+$5 = (struct list_entry_t *) 0x7048
+$6 = {prev = 0xc0800048, next = 0x7048}
+$7 = (struct proc_struct *) 0x7000
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f5e: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401ba8: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400869: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cbf: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401e9f: file kern/driver/thread.c, line 284.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024ff "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024ff "th1", prio=20, function=0x40015b <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:284
+$1 = (struct list_entry_t *) 0x40dc24 <proc_all_listHead+4>
+$2 = {prev = 0x7050, next = 0xc0801050}
+$3 = (struct list_entry_t *) 0xc0801048
+$4 = (struct list_entry_t *) 0xc0800048
+$5 = (struct list_entry_t *) 0xc0800048
+$6 = {prev = 0xc0801048, next = 0x40dc30 <proc_ready_listHead+4>}
+$7 = {prev = 0xc0800048, next = 0xc0801048}
+kern_init () at kern/init/init.c:62
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+$8 = (struct list_entry_t *) 0xc0801048
+$9 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 4194651, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, name = "th1", '\000' <repeats 12 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 0, stack_magic = 0}
+switch_to () at kern/driver/switch.S:6
+switch_to () at kern/driver/switch.S:10
+switch_to () at kern/driver/switch.S:22
+switch_to () at kern/driver/switch.S:31
+hello2 (arg=<error reading variable: Unknown argument list address for `arg'.>) at kern/init/init.c:75
+hello2 (arg=0xf000ff53) at kern/init/init.c:77
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:103
+getCursorSite () at kern/vga/vga.c:25
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:107
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xffffffa8>, 
+    pos=<error reading variable: Cannot access memory at address 0xffffffc8>) at kern/vga/vga.c:61
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:116
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xffffffa8>, 
+    pos=<error reading variable: Cannot access memory at address 0xffffffc8>) at kern/vga/vga.c:61
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:116
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xffffffa8>, 
+    pos=<error reading variable: Cannot access memory at address 0xffffffc8>) at kern/vga/vga.c:61
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:116
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xffffffa8>, 
+    pos=<error reading variable: Cannot access memory at address 0xffffffc8>) at kern/vga/vga.c:61
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:116
+setCursorSite (pos=<error reading variable: Cannot access memory at address 0xffffffc8>)
+    at kern/vga/vga.c:41
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:122
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:103
+getCursorSite () at kern/vga/vga.c:25
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffffe4>)
+    at kern/vga/vga.c:107
 Continuing.
 [Inferior 1 (Remote target) exited normally]
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f60: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40086b: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401baa: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40086b: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401cc1: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401ea1: file kern/driver/thread.c, line 284.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40251f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x402523 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:284
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff8c>)
+    at kern/driver/idt.c:88
+default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/vga/vga.c:141
+Continuing.
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff8c>)
+    at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff8c>)
+    at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:88
+default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:141
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff10>)
+    at kern/vga/vga.c:103
+getCursorSite () at kern/vga/vga.c:25
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff10>)
+    at kern/vga/vga.c:107
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed4>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef4>) at kern/vga/vga.c:61
+scrollScreen () at kern/vga/vga.c:56
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed4>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef4>) at kern/vga/vga.c:65
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff10>)
+    at kern/vga/vga.c:116
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed4>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef4>) at kern/vga/vga.c:61
+scrollScreen () at kern/vga/vga.c:56
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed4>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef4>) at kern/vga/vga.c:65
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff10>)
+    at kern/vga/vga.c:116
+setCursorSite (pos=<error reading variable: Cannot access memory at address 0xfffffef4>)
+    at kern/vga/vga.c:41
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff10>)
+    at kern/vga/vga.c:122
+default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:145
+default_putChar (ch=<error reading variable: Cannot access memory at address 0xfffffef4>)
+    at kern/vga/vga.c:86
+getCursorSite () at kern/vga/vga.c:25
+default_putChar (ch=<error reading variable: Cannot access memory at address 0xfffffef4>)
+    at kern/vga/vga.c:90
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed0>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef0>) at kern/vga/vga.c:61
+scrollScreen () at kern/vga/vga.c:56
+base_putchar (ch=<error reading variable: Cannot access memory at address 0xfffffed0>, 
+    pos=<error reading variable: Cannot access memory at address 0xfffffef0>) at kern/vga/vga.c:65
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:88
+default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:141
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:88
+default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:141
+Breakpoint 9 at 0x4004f6: file kern/vga/vga.c, line 156.
+Continuing.
+
+Breakpoint 9, default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:156
+trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:104
+default_putStr (str=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:103
+Continuing.
+
+Breakpoint 9, default_putInt (num=<error reading variable: Cannot access memory at address 0xffffff2c>)
+    at kern/vga/vga.c:156
+trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:106
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff5c>)
+    at kern/driver/idt.c:88
+$1 = 8
+Breakpoint 1 at 0x40000b: file kern/init/init.c, line 22.
+Breakpoint 2 at 0x401ed0: file kern/driver/memory.c, line 46.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400848: file kern/driver/idt.c, line 90.
+Breakpoint 4 at 0x401b1a: file kern/driver/thread.c, line 174.
+Breakpoint 5 at 0x400003: file kern/init/init.c, line 10.
+Breakpoint 6 at 0x400848: file kern/driver/idt.c, line 90.
+Breakpoint 7 at 0x401c31: file kern/driver/thread.c, line 200.
+Breakpoint 8 at 0x401e11: file kern/driver/thread.c, line 285.
+=> 0x400334 <default_putStr+11>:	mov    %eax,-0x4(%ebp)
+   0x400337 <default_putStr+14>:	movl   $0x0,-0x8(%ebp)
+   0x40033e <default_putStr+21>:	jmp    0x4003bc <default_putStr+147>
+   0x400340 <default_putStr+23>:	mov    -0x8(%ebp),%edx
+   0x400343 <default_putStr+26>:	mov    0x8(%ebp),%eax
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff60>)
+    at kern/driver/idt.c:90
+eos_running_proc () at kern/driver/thread.c:192
+trap_dispatch (tf=<error reading variable: Cannot access memory at address 0xffffff60>)
+    at kern/driver/idt.c:109
+Cannot access memory at address 0xffffff4c
+Cannot access memory at address 0xffffff4c
+Cannot access memory at address 0xffffff4c
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401eca: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c2b: file kern/driver/thread.c, line 199.
+Breakpoint 8 at 0x401e0b: file kern/driver/thread.c, line 284.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40247f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+kern_init () at kern/init/init.c:54
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x402483 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:284
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+$1 = (struct proc_struct *) 0x7000
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:199
+$2 = (struct proc_struct *) 0x7000
+switch_to () at kern/driver/switch.S:6
+switch_to () at kern/driver/switch.S:10
+switch_to () at kern/driver/switch.S:22
+switch_to () at kern/driver/switch.S:31
+hello2 (arg=<error reading variable: Unknown argument list address for `arg'.>) at kern/init/init.c:74
+hello2 (arg=0xf000ff53) at kern/init/init.c:75
+$3 = (void *) 0xfffffff4
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401eea: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c4b: file kern/driver/thread.c, line 203.
+Breakpoint 8 at 0x401e2b: file kern/driver/thread.c, line 290.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40249f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024a3 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:290
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:203
+$1 = (struct proc_struct *) 0x7000
+$2 = (struct proc_struct *) 0xc0801000
+$3 = {state = TASK_RUNNING, pid = 0, kstack = 3230027376, context = {eip = 4194652, esp = 3230027376, 
+    ebx = 0, ecx = 0, edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, 
+  name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 20, stack_magic = 0}
+$4 = {eip = 4194652, esp = 3230027376, ebx = 0, ecx = 0, edx = 0, esi = 0, edi = 0, ebp = 0}
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401eea: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c4b: file kern/driver/thread.c, line 203.
+Breakpoint 8 at 0x401e2b: file kern/driver/thread.c, line 290.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40249f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+$1 = (struct proc_struct *) 0xc0800000
+$2 = 0xc0863e70
+$3 = 3230023280
+$4 = 0xc0863e70
+$5 = (struct proc_struct *) 0xc0800000
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401ee8: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c49: file kern/driver/thread.c, line 203.
+Breakpoint 8 at 0x401e29: file kern/driver/thread.c, line 290.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40249f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x4024a3 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+$1 = 0xc0801ffc
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:290
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:203
+
+Breakpoint 3, trap_dispatch (tf=0xc0801fac) at kern/driver/idt.c:88
+$2 = (struct proc_struct *) 0xc0801000
+Breakpoint 1 at 0x40000b: file kern/init/init.c, line 22.
+Breakpoint 2 at 0x401eee: file kern/driver/memory.c, line 46.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400848: file kern/driver/idt.c, line 90.
+Breakpoint 4 at 0x401b1a: file kern/driver/thread.c, line 174.
+Breakpoint 5 at 0x400003: file kern/init/init.c, line 10.
+Breakpoint 6 at 0x400848: file kern/driver/idt.c, line 90.
+Breakpoint 7 at 0x401c4f: file kern/driver/thread.c, line 205.
+Breakpoint 8 at 0x401e2f: file kern/driver/thread.c, line 292.
+=> 0x400334 <default_putStr+11>:	mov    %eax,-0x4(%ebp)
+   0x400337 <default_putStr+14>:	movl   $0x0,-0x8(%ebp)
+   0x40033e <default_putStr+21>:	jmp    0x4003bc <default_putStr+147>
+   0x400340 <default_putStr+23>:	mov    -0x8(%ebp),%edx
+   0x400343 <default_putStr+26>:	mov    0x8(%ebp),%eax
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+trap (tf=0xc0801f80) at kern/driver/idt.c:145
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+$1 = (struct proc_struct *) 0xc0801000
+$2 = {state = TASK_RUNNING, pid = 0, kstack = 3229622268, context = {eip = 4201671, esp = 3229622028, 
+    ebx = 0, ecx = 4294967295, edx = 3229618188, esi = 0, edi = 0, ebp = 3229622068}, tf = 0xc0801f80, 
+  cr3 = 0, name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 18, stack_magic = 0}
+trap (tf=0xc0801f80) at kern/driver/idt.c:145
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+$3 = {state = TASK_RUNNING, pid = 0, kstack = 3229622268, context = {eip = 4201671, esp = 3229622028, 
+    ebx = 0, ecx = 4294967295, edx = 3229618188, esi = 0, edi = 0, ebp = 3229622068}, tf = 0xc0801f80, 
+  cr3 = 0, name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 11, stack_magic = 0}
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:90
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:90
+$4 = (struct proc_struct *) 0xc0801000
+$5 = {state = TASK_RUNNING, pid = 0, kstack = 3229622268, context = {eip = 4201671, esp = 3229622028, 
+    ebx = 0, ecx = 4294967295, edx = 3229618188, esi = 0, edi = 0, ebp = 3229622068}, tf = 0xc0801f80, 
+  cr3 = 0, name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 1, stack_magic = 0}
+trap (tf=0xc0801f84) at kern/driver/idt.c:145
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:90
+$6 = {state = TASK_RUNNING, pid = 0, kstack = 3229622268, context = {eip = 4201671, esp = 3229622028, 
+    ebx = 0, ecx = 4294967295, edx = 3229618188, esi = 0, edi = 0, ebp = 3229622068}, tf = 0xc0801f80, 
+  cr3 = 0, name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}, all_link = {
+    prev = 0x40dc24 <proc_all_listHead+4>, next = 0xc0800050}, priority = 20, ticks = 0, stack_magic = 0}
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:205
+$7 = (struct list_entry_t *) 0xc0801048
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f6a: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c49: file kern/driver/thread.c, line 204.
+Breakpoint 8 at 0x401eab: file kern/driver/thread.c, line 299.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40251f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x402523 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:299
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:8
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+$1 = (struct proc_struct *) 0x7000
+$2 = {state = TASK_RUNNING, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b94, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x0, next = 0x0}, all_link = {prev = 0xc0800050, 
+    next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 4294967295, stack_magic = 0}
+$3 = (struct proc_struct *) 0x7000
+$4 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b94, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0801048}, all_link = {
+    prev = 0xc0800050, next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 31, stack_magic = 0}
+$5 = (struct list_entry_t *) 0xc0800048
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f6a: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c49: file kern/driver/thread.c, line 204.
+Breakpoint 8 at 0x401eab: file kern/driver/thread.c, line 299.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40251f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x402523 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:299
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+$1 = {state = TASK_RUNNING, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b98, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0x0, next = 0x0}, all_link = {prev = 0xc0800050, 
+    next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 4294967295, stack_magic = 0}
+$2 = (struct list_entry_t *) 0xc0800048
+$3 = (struct list_entry_t *) 0xc0800048
+$4 = (struct list_entry_t *) 0xc0800048
+$5 = {prev = 0x0, next = 0x0}
+$6 = (struct proc_struct *) 0x7000
+$7 = {prev = 0xc0801048, next = 0x40dc30 <proc_ready_listHead+4>}
+No symbol "elm" in current context.
+No symbol "listelm" in current context.
+Invalid character ';' in expression.
+No symbol "elm" in current context.
+No symbol "elm" in current context.
+No symbol "e1m" in current context.
+No symbol "prev" in current context.
+No symbol "elm" in current context.
+Breakpoint 1 at 0x400005: file kern/init/init.c, line 16.
+Breakpoint 2 at 0x401f6b: file kern/driver/memory.c, line 45.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 4 at 0x401b14: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x400842: file kern/driver/idt.c, line 88.
+Breakpoint 7 at 0x401c49: file kern/driver/thread.c, line 204.
+Breakpoint 8 at 0x401eac: file kern/driver/thread.c, line 299.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:16
+Continuing.
+
+Breakpoint 2, CalMemSize () at kern/driver/memory.c:45
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x40251f "th1", prio=20, function=0x40013e <hello1>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 4, eos_proc_start (name=0x402523 "th2", prio=20, function=0x40015c <hello2>, func_arg=0x0)
+    at kern/driver/thread.c:172
+Continuing.
+
+Breakpoint 8, debug_ready_list () at kern/driver/thread.c:299
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+$1 = (struct list_entry_t *) 0xc0800048
+$2 = (struct proc_struct *) 0x7000
+$3 = {state = TASK_READY, pid = 0, kstack = 0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, edx = 0, 
+    esi = 0, edi = 0, ebp = 0}, tf = 0x7b98, cr3 = 0, name = "main", '\000' <repeats 11 times>, 
+  exit_code = 0, ready_link = {prev = 0xc0800048, next = 0x40dc30 <proc_ready_listHead+4>}, all_link = {
+    prev = 0xc0800050, next = 0x40dc24 <proc_all_listHead+4>}, priority = 31, ticks = 31, stack_magic = 0}
+$4 = (struct list_entry_t *) 0xc0801048
+$5 = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0xc0800048}
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801fac) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801fac) at kern/driver/idt.c:88
+$6 = (struct proc_struct *) 0xc0801000
+$7 = 19
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801fac) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+$8 = 0
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+$9 = (struct proc_struct *) 0xc0801000
+$10 = {state = TASK_READY, pid = 0, kstack = 3229622268, context = {eip = 4194652, esp = 3229622268, 
+    ebx = 0, ecx = 0, edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0xc0801f7c, cr3 = 0, 
+  name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {prev = 0x7048, 
+    next = 0x40dc30 <proc_ready_listHead+4>}, all_link = {prev = 0x40dc24 <proc_all_listHead+4>, 
+    next = 0xc0800050}, priority = 20, ticks = 20, stack_magic = 0}
+No symbol "t" in current context.
+$11 = {prev = 0x40dc30 <proc_ready_listHead+4>, next = 0x7048}
+$12 = (struct list_entry_t *) 0xc0800048
+$13 = (struct proc_struct *) 0xc0801000
+$14 = {state = TASK_READY, pid = 0, kstack = 3229622268, context = {eip = 4194652, esp = 3229622268, 
+    ebx = 0, ecx = 0, edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0xc0801f7c, cr3 = 0, 
+  name = "th2", '\000' <repeats 12 times>, exit_code = 0, ready_link = {prev = 0x7048, 
+    next = 0x40dc30 <proc_ready_listHead+4>}, all_link = {prev = 0x40dc24 <proc_all_listHead+4>, 
+    next = 0xc0800050}, priority = 20, ticks = 20, stack_magic = 0}
+
+Breakpoint 3, trap_dispatch (tf=0xc0800fac) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+$15 = 14
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f84) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0800f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+$16 = (struct proc_struct *) 0xc0800000
+$17 = {state = TASK_RUNNING, pid = 0, kstack = 3229618172, context = {eip = 4194622, esp = 3229618172, 
+    ebx = 0, ecx = 0, edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0xc0800f7c, cr3 = 0, 
+  name = "th1", '\000' <repeats 12 times>, exit_code = 0, ready_link = {
+    prev = 0x40dc30 <proc_ready_listHead+4>, next = 0x7048}, all_link = {prev = 0xc0801050, 
+    next = 0x7050}, priority = 20, ticks = 4294967295, stack_magic = 0}
+
+Breakpoint 3, trap_dispatch (tf=0x7b98) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 5, dowhile () at kern/init/init.c:8
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+$18 = 9
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 7, eos_schedule () at kern/driver/thread.c:204
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+$19 = (struct proc_struct *) 0xc0801000
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88

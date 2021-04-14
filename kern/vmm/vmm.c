@@ -30,7 +30,8 @@ static void vmmPageInit(void){
     // 将第x+1个4MB地址((3GB+4 - 3GB+8MB)) 映射到第2个页表
     DEFINE_SetPageItem(PageSetIt+0x301, 0x00102000, 0x7);
 
-
+    // 将最后一个目录项设置为自己,用于更新页目录项
+    DEFINE_SetPageItem(PageSetIt+0x3FF, 0x00100000, 0x7);
 
     // 设置第一个页表
     // 映射到 物理空间0-4MB 

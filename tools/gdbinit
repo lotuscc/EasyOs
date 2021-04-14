@@ -8,8 +8,12 @@ break kern_init
 break CalMemSize
 break Settest
 break OpenPageing
-
-
+break trap_dispatch
+break eos_proc_start
 break dowhile
+break trap_dispatch
+break eos_schedule
+break debug_ready_list
+
 
 x /5i $pc

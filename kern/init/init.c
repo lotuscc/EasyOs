@@ -7,7 +7,9 @@
 
 void dowhile(){
         /* do nothing */
-    while (1);
+    while (1){
+        vga->putStr("main ");
+    }
 }
 
 void hello1(void* arg);
@@ -35,8 +37,6 @@ int kern_init(void) {
 
     vga->putStr("Page init now\n");
     
-    
-    
     vmm_init();
     
     // 中断控制器初始化
@@ -48,27 +48,32 @@ int kern_init(void) {
     // 时钟初始化
     timer_init();
     
+    mem_init();
 
     eos_proc_init();
 
     eos_proc_start("th1", 20, hello1, 0);
-    eos_proc_start("th1", 20, hello1, 0);
+    eos_proc_start("th2", 20, hello2, 0);
+
+    debug_all_list();
+    
+    debug_ready_list();
 
     asm volatile("sti");	     // 为演示中断处理,在此临时开中断
 
     dowhile();
 }
 
-
-
 void hello1(void* arg){
+    asm volatile("sti");
     while(1){
-        vga->putStr("1111");
+        vga->putStr("thread1 ");
     }
 }
 
 void hello2(void* arg){
+    asm volatile("sti");
     while(2){
-        vga->putStr("2222");
+        vga->putStr("thread2 ");
     }
 }
