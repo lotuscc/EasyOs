@@ -2,11 +2,16 @@
 #include "vmm.h"
 #include "pic.h"
 #include "timer.h"
+#include "thread.h"
+
 
 void dowhile(){
         /* do nothing */
     while (1);
 }
+
+void hello1(void* arg);
+void hello2(void* arg);
 
 int kern_init(void) {
 
@@ -43,8 +48,27 @@ int kern_init(void) {
     // 时钟初始化
     timer_init();
     
+
+    eos_proc_init();
+
+    eos_proc_start("th1", 20, hello1, 0);
+    eos_proc_start("th1", 20, hello1, 0);
+
     asm volatile("sti");	     // 为演示中断处理,在此临时开中断
 
     dowhile();
 }
 
+
+
+void hello1(void* arg){
+    while(1){
+        vga->putStr("1111");
+    }
+}
+
+void hello2(void* arg){
+    while(2){
+        vga->putStr("2222");
+    }
+}

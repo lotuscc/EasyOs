@@ -2,10 +2,10 @@
 #include "bitmap.h"
 #include "string.h"
 #include "memory.h"
+#include "thread.h"
 
+#define ARDS_ADDRESS     0x8000                   // ARDS结构的物理地址
 
-#define ARDS_ADDRESS    0x8000                  // ARDS结构的物理地址
-#define PG_SIZE          4096                    // 页大小
 
 /***************  位图地址 ********************
  * 因为0xc009f000是内核主线程栈顶，0xc009e000是内核主线程的pcb.
@@ -17,10 +17,10 @@
 #define PDE_IDX(addr) ((addr & 0xffc00000) >> 22)
 #define PTE_IDX(addr) ((addr & 0x003ff000) >> 12)
 
-/* 0xc0000000是内核从虚拟地址3G起. 0x100000意指跨过低端1M内存,使虚拟地址在逻辑上连续 */
+// 0xc0000000是内核从虚拟地址3G起. 0x100000意指跨过低端1M内存,使虚拟地址在逻辑上连续
 #define K_HEAP_START 0xc0100000
 
-/* 内存池结构,生成两个实例用于管理内核内存池和用户内存池 */
+// 内存池结构,生成两个实例用于管理内核内存池和用户内存池 */
 struct pool {
    struct bitmap pool_bitmap;	// 本内存池用到的位图结构,用于管理物理内存
    uint32_t phy_addr_start;	    // 本内存池所管理物理内存的起始地址
@@ -33,7 +33,13 @@ struct virtual_addr kernel_vaddr;	        // 此结构是用来给内核分配�
 
 
 // 64位运算会出错
-
+// 获取当前线程pcb指针
+struct task_struct* running_thread() {
+   uint32_t esp; 
+   asm ("mov %%esp, %0" : "=g" (esp));
+   // 取esp整数部分即pcb起始地址
+   return (struct task_struct*)(esp & 0xfffff000);
+}
 
 // 检测物理内存的大小，最大只能检测出4Gb
 uint32_t CalMemSize(){
@@ -58,15 +64,6 @@ uint32_t CalMemSize(){
     return TolMemSize;
 }
 
-
-
-// 获取当前线程pcb指针
-struct task_struct* running_thread() {
-   uint32_t esp; 
-   asm ("mov %%esp, %0" : "=g" (esp));
-   // 取esp整数部分即pcb起始地址
-   return (struct task_struct*)(esp & 0xfffff000);
-}
 
 
 // 在pf表示的虚拟内存池中申请pg_cnt个虚拟页
@@ -252,19 +249,19 @@ void* get_a_page(enum pool_flags pf, uint32_t vaddr) {
     int32_t bit_idx = -1;
 
     // 若当前是用户进程申请用户内存,就修改用户进程自己的虚拟地址位图
-    // if (cur->pgdir != NULL && pf == PF_USER) {
-    //     bit_idx = (vaddr - cur->userprog_vaddr.vaddr_start) / PG_SIZE;
-    //     // ASSERT(bit_idx > 0);
-    //     bitmap_set(&cur->userprog_vaddr.vaddr_bitmap, bit_idx, 1);
+    if (cur->pgdir != NULL && pf == PF_USER) {
+        bit_idx = (vaddr - cur->userprog_vaddr.vaddr_start) / PG_SIZE;
+        // ASSERT(bit_idx > 0);
+        bitmap_set(&cur->userprog_vaddr.vaddr_bitmap, bit_idx, 1);
 
-    // } else if (cur->pgdir == NULL && pf == PF_KERNEL){
-    //     // 如果是内核线程申请内核内存,就修改kernel_vaddr.
-    //     bit_idx = (vaddr - kernel_vaddr.vaddr_start) / PG_SIZE;
-    //     // ASSERT(bit_idx > 0);
-    //     bitmap_set(&kernel_vaddr.vaddr_bitmap, bit_idx, 1);
-    // } else {
-    //     // PANIC("get_a_page:not allow kernel alloc userspace or user alloc kernelspace by get_a_page");
-    // }
+    } else if (cur->pgdir == NULL && pf == PF_KERNEL){
+        // 如果是内核线程申请内核内存,就修改kernel_vaddr.
+        bit_idx = (vaddr - kernel_vaddr.vaddr_start) / PG_SIZE;
+        // ASSERT(bit_idx > 0);
+        bitmap_set(&kernel_vaddr.vaddr_bitmap, bit_idx, 1);
+    } else {
+        // PANIC("get_a_page:not allow kernel alloc userspace or user alloc kernelspace by get_a_page");
+    }
 
     void* page_phyaddr = palloc(mem_pool);
     if (page_phyaddr == NULL) {
@@ -289,10 +286,13 @@ static void mem_pool_init(uint32_t all_mem) {
 
     // 页表大小= 1页的页目录表+第0和第768个页目录项指向同一个页表+
     // 第769~1022个页目录项共指向254个页表,共256个页框
-    uint32_t page_table_size = PG_SIZE * 256;	        
+    uint32_t page_table_size = PG_SIZE * (1+ 255);	        
                                                         
     // 0x100000为低端1M内存
+    // 已经使用的内存为低端1MB加上页表(页表以及页目录表)使用的内存.
     uint32_t used_mem = page_table_size + 0x100000;	    
+
+    // 剩余空闲的内存为总内存减去已经使用的内存
     uint32_t free_mem = all_mem - used_mem;
     
     // 1页为4k,不管总内存是不是4k的倍数,

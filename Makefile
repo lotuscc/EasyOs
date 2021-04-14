@@ -56,10 +56,14 @@ kernel:
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/bitmap.c -o obj/kern/bitmap.o
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/memory.c -o obj/kern/memory.o
-	
-	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.O
 
-	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/vector.S -o obj/kern/vector.O
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/thread.c -o obj/kern/thread.o
+	
+	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.o
+
+	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/vector.S -o obj/kern/vector.o
+
+	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/switch.S -o obj/kern/switch.o
 
 	$(LD) $(LDFLAGS) -T ./tools/kernel.ld -o ./bin/kernel  \
 		./obj/kern/init.o	\
@@ -72,6 +76,8 @@ kernel:
 		./obj/kern/timer.o 	\
 		./obj/kern/string.o 	\
 		./obj/kern/bitmap.o 	\
+		./obj/kern/thread.o 	\
+		./obj/kern/switch.o 	\
 		./obj/kern/memory.o 	
 
 hd60M.img: boot kernel

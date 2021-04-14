@@ -3,6 +3,9 @@
 
 #include "bitmap.h"
 
+
+#define PG_SIZE          4096                     // 页大小
+
 // 内存池标记,用于判断用哪个内存池
 enum pool_flags {
    PF_KERNEL = 1,    // 内核内存池

@@ -1,6 +1,7 @@
 #include "idt.h"
 #include "vga.h"
 #include "timer.h"
+#include "thread.h"
 
 /* Gate descriptors for interrupts and traps */
 struct gatedesc {
@@ -97,12 +98,18 @@ static void trap_dispatch(struct trapframe *tf) {
         
         case IRQ_OFFSET + IRQ_TIMER: // IRQ0 时钟中断
         /* do nothing */
-        ticks++;
-        vga->putInt(tf->tf_trapno);
-        vga->putStr(" timer trap! ");
-        vga->putInt(ticks);
-        vga->putChar(' ');
+            ticks++;
+            vga->putInt(tf->tf_trapno);
+            vga->putStr(" timer trap! ");
+            vga->putInt(ticks);
+            vga->putChar(' ');
 
+            struct proc_struct* cur = eos_running_proc();
+            if (cur->ticks-- == 0){
+                cur->tf = tf;
+                eos_schedule();
+            }
+            
         break;
         
         case IRQ_OFFSET + IRQ_KBD:   // IRQ1 键盘 
@@ -125,7 +132,7 @@ static void trap_dispatch(struct trapframe *tf) {
         break;
 
         default:
-        vga->putStr("default trap! \n");
+            vga->putStr("default trap! \n");
          
     }
 }
