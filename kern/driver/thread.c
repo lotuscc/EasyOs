@@ -263,7 +263,7 @@ static void make_main_thread(void) {
    main_thread->state = TASK_RUNNING;
 
 // main函数是当前线程,当前线程不在thread_ready_list中,
-// 所以只将其加在thread_all_list中. */
+// 所以只将其加在thread_all_list中. */l
 
    proc_all_listHead.proc_nums++;
    list_add(&proc_all_listHead.entry, &main_thread->all_link);

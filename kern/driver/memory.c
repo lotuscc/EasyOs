@@ -3,6 +3,9 @@
 #include "string.h"
 #include "memory.h"
 #include "thread.h"
+#include "idt.h"
+#include "x86.h"
+
 
 #define ARDS_ADDRESS     0x8000                   // ARDS结构的物理地址
 
@@ -245,7 +248,7 @@ void* get_a_page(enum pool_flags pf, uint32_t vaddr) {
     // lock_acquire(&mem_pool->lock);
 
     // 先将虚拟地址对应的位图置1
-    struct task_struct* cur = running_thread();
+    struct proc_struct* cur = running_thread();
     int32_t bit_idx = -1;
 
     // 若当前是用户进程申请用户内存,就修改用户进程自己的虚拟地址位图
@@ -366,9 +369,86 @@ static void mem_pool_init(uint32_t all_mem) {
     bitmap_init(&kernel_vaddr.vaddr_bitmap);
 }
 
+/* *
+ * Global Descriptor Table:
+ *
+ * The kernel and user segments are identical (except for the DPL). To load
+ * the %ss register, the CPL must equal the DPL. Thus, we must duplicate the
+ * segments for the user and the kernel. Defined as follows:
+ *   - 0x0 :  unused (always faults -- for trapping NULL far pointers)
+ *   - 0x8 :  kernel code segment
+ *   - 0x10:  kernel data segment
+ *   - 0x18:  user code segment
+ *   - 0x20:  user data segment
+ *   - 0x28:  defined for tss, initialized in gdt_init
+ * */
+static struct segdesc gdt[] = {
+    SEG_NULL,
+    [SEG_KTEXT] = SEG(STA_X | STA_R, 0x0, 0xFFFFFFFF, DPL_KERNEL),
+    [SEG_KDATA] = SEG(STA_W, 0x0, 0xFFFFFFFF, DPL_KERNEL),
+    [SEG_UTEXT] = SEG(STA_X | STA_R, 0x0, 0xFFFFFFFF, DPL_USER),
+    [SEG_UDATA] = SEG(STA_W, 0x0, 0xFFFFFFFF, DPL_USER),
+    [SEG_TSS] = SEG_NULL,
+};
+
+static struct pseudodesc gdt_pd = {
+    sizeof(gdt) - 1, (uintptr_t)gdt};
+
+/* *
+ * lgdt - load the global descriptor table register and reset the
+ * data/code segement registers for kernel.
+ * */
+static inline void
+lgdt(struct pseudodesc *pd)
+{
+    asm volatile("lgdt (%0)" ::"r"(pd));
+    asm volatile("movw %%ax, %%gs" ::"a"(USER_DS));
+    asm volatile("movw %%ax, %%fs" ::"a"(USER_DS));
+    asm volatile("movw %%ax, %%es" ::"a"(KERNEL_DS));
+    asm volatile("movw %%ax, %%ds" ::"a"(KERNEL_DS));
+    asm volatile("movw %%ax, %%ss" ::"a"(KERNEL_DS));
+    // reload cs
+    asm volatile("ljmp %0, $1f\n 1:\n" ::"i"(KERNEL_CS));
+}
+
+static struct taskstate ts = {0};
+
+
+/* *
+ * load_esp0 - change the ESP0 in default task state segment,
+ * so that we can use different kernel stack when we trap frame
+ * user to kernel.
+ * */
+void load_esp0(uintptr_t esp0)
+{
+    ts.ts_esp0 = esp0;
+}
+
+char* bootstacktop = 0x7c00;
+
+/* gdt_init - initialize the default GDT and TSS */
+static void gdt_init(void)
+{
+    // set boot kernel stack and default SS0
+    load_esp0((uintptr_t)bootstacktop);
+    ts.ts_ss0 = KERNEL_DS;
+
+    // initialize the TSS filed of the gdt
+    gdt[SEG_TSS] = SEGTSS(STS_T32A, (uintptr_t)&ts, sizeof(ts), DPL_KERNEL);
+
+    // reload all segment registers
+    lgdt(&gdt_pd);
+
+    // load the TSS
+    ltr(GD_TSS);
+}
+
 // 内存管理部分初始化入口
 void mem_init() {
-   uint32_t mem_bytes_total = CalMemSize();
-   // 初始化内存池
-   mem_pool_init(mem_bytes_total);
+
+    gdt_init();
+
+    uint32_t mem_bytes_total = CalMemSize();
+    // 初始化内存池
+    mem_pool_init(mem_bytes_total);
 }

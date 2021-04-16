@@ -2,6 +2,7 @@
 #define __IDT_H__
 #include "elf.h"
 #include "x86.h"
+#include "mmu.h"
 
 /* Trap Numbers */
 
@@ -92,7 +93,6 @@
 #define STS_CG32        0xC         // 32-bit Call Gate
 #define STS_IG32        0xE         // 32-bit Interrupt Gate
 #define STS_TG32        0xF         // 32-bit Trap Gate
-
 
 /* registers as pushed by pushal */
 struct pushregs {

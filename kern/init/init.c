@@ -37,6 +37,8 @@ int kern_init(void) {
 
     vga->putStr("Page init now\n");
     
+    mem_init();
+
     vmm_init();
     
     // 中断控制器初始化
@@ -48,7 +50,7 @@ int kern_init(void) {
     // 时钟初始化
     timer_init();
     
-    mem_init();
+    
 
     eos_proc_init();
 

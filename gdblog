@@ -1573,3 +1573,46 @@ Breakpoint 3, trap_dispatch (tf=0xc0801f80) at kern/driver/idt.c:88
 Continuing.
 
 Breakpoint 3, trap_dispatch (tf=0xc0801f7c) at kern/driver/idt.c:88
+Breakpoint 1 at 0x40001d: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x401fb3: file kern/driver/memory.c, line 48.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40085a: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x401b35: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40085a: file kern/driver/idt.c, line 43.
+Breakpoint 7 at 0x401c71: file kern/driver/thread.c, line 204.
+Breakpoint 8 at 0x401ef2: file kern/driver/thread.c, line 299.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+Breakpoint 1 at 0x40001d: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x401fb3: file kern/driver/memory.c, line 48.
+Function "Settest" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "OpenPageing" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Breakpoint 3 at 0x40085a: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x401b35: file kern/driver/thread.c, line 172.
+Breakpoint 5 at 0x400000: file kern/init/init.c, line 8.
+Breakpoint 6 at 0x40085a: file kern/driver/idt.c, line 43.
+Breakpoint 7 at 0x401c71: file kern/driver/thread.c, line 204.
+Breakpoint 8 at 0x401ef2: file kern/driver/thread.c, line 299.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+vmm_init () at kern/vmm/vmm.c:66
+kern_init () at kern/init/init.c:43
+mem_init () at kern/driver/memory.c:449

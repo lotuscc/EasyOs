@@ -9,8 +9,8 @@ ENTRY(kern_init)
 SECTIONS {
 	/* Load the kernel at this address: "." means the current address */
 	
-	/* 4MB */
-	. = 0x400000;  
+	/* 2MB */
+	. = 0x100000;  
 
 	/* test the true */
 	/* TestAdd = .; */

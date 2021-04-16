@@ -3,7 +3,20 @@
 #include "thread.h"    
 #include "list.h"    
 #include "string.h"
+#include "idt.h"
 
+// idle proc
+struct proc_struct *idleproc = NULL;
+// init proc
+struct proc_struct *initproc = NULL;
+// current proc
+struct proc_struct *current = NULL;
+
+static int nr_process = 0;
+
+void kernel_thread_entry(void);
+void forkrets(struct trapframe *tf);
+void switch_to(struct context *from, struct context *to);
 
 extern void intr_exit(void);
 
@@ -107,3 +120,129 @@ void process_execute(void* filename, char* name) {
    intr_set_status(old_status);
 }
 
+uintptr_t boot_cr3;
+
+// alloc_proc - alloc a proc_struct and init all fields of proc_struct
+static struct proc_struct* alloc_proc(void) {
+    struct proc_struct *proc = get_kernel_pages(1);
+    if (proc != NULL) {
+        proc->state = TASK_UNINIT;
+        proc->pid = -1;
+        proc->runs = 0;
+        proc->kstack = 0;
+        proc->need_resched = 0;
+        proc->parent = NULL;
+        proc->mm = NULL;
+        memset(&(proc->context), 0, sizeof(struct context));
+        proc->tf = NULL;
+        proc->cr3 = boot_cr3;
+        proc->flags = 0;
+        memset(proc->name, 0, PROC_NAME_LEN);
+        proc->wait_state = 0;
+        proc->cptr = proc->optr = proc->yptr = NULL;
+        proc->rq = NULL;
+        list_init(&(proc->run_link));
+        proc->time_slice = 0;
+      //   proc->lab6_run_pool.left = proc->lab6_run_pool.right = proc->lab6_run_pool.parent = NULL;
+      //   proc->lab6_stride = 0;
+      //   proc->lab6_priority = 0;
+      //   proc->filesp = NULL;
+    }
+    return proc;
+}
+
+// set_proc_name - set the name of proc
+char *
+set_proc_name(struct proc_struct *proc, const char *name) {
+    memset(proc->name, 0, sizeof(proc->name));
+    return memcpy(proc->name, name, PROC_NAME_LEN);
+}
+
+// get_proc_name - get the name of proc
+char *
+get_proc_name(struct proc_struct *proc) {
+    static char name[PROC_NAME_LEN + 1];
+    memset(name, 0, sizeof(name));
+    return memcpy(name, proc->name, PROC_NAME_LEN);
+}
+
+// forkret -- the first kernel entry point of a new thread/process
+// NOTE: the addr of forkret is setted in copy_thread function
+//       after switch_to, the current proc will execute here.
+static void
+forkret(void) {
+    forkrets(current->tf);
+}
+
+// kernel_thread - create a kernel thread using "fn" function
+// NOTE: the contents of temp trapframe tf will be copied to 
+//       proc->tf in do_fork-->copy_thread function
+int
+kernel_thread(int (*fn)(void *), void *arg, uint32_t clone_flags) {
+    struct trapframe tf;
+    memset(&tf, 0, sizeof(struct trapframe));
+    tf.tf_cs = KERNEL_CS;
+    tf.tf_ds = tf.tf_es = tf.tf_ss = KERNEL_DS;
+    tf.tf_regs.reg_ebx = (uint32_t)fn;
+    tf.tf_regs.reg_edx = (uint32_t)arg;
+    tf.tf_eip = (uint32_t)kernel_thread_entry;
+    return do_fork(clone_flags | CLONE_VM, 0, &tf);
+}
+
+// setup_kstack - alloc pages with size KSTACKPAGE as process kernel stack
+static int
+setup_kstack(struct proc_struct *proc) {
+   //  struct Page *page = alloc_pages(KSTACKPAGE);
+   //  if (page != NULL) {
+   //      proc->kstack = (uintptr_t)page2kva(page);
+   //      return 0;
+   //  }
+   //  return -E_NO_MEM;
+}
+
+// copy_thread - setup the trapframe on the  process's kernel stack top and
+//             - setup the kernel entry point and stack of process
+static void
+copy_thread(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf) {
+    proc->tf = (struct trapframe *)(proc->kstack + KSTACKSIZE) - 1;
+    *(proc->tf) = *tf;
+    proc->tf->tf_regs.reg_eax = 0;
+    proc->tf->tf_esp = esp;
+    proc->tf->tf_eflags |= FL_IF;
+
+    proc->context.eip = (uintptr_t)forkret;
+    proc->context.esp = (uintptr_t)(proc->tf);
+}
+
+
+/* do_fork -     parent process for a new child process
+ * @clone_flags: used to guide how to clone the child process
+ * @stack:       the parent's user stack pointer. if stack==0, It means to fork a kernel thread.
+ * @tf:          the trapframe info, which will be copied to child process's proc->tf
+ */
+int
+do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
+    int ret = 0;
+
+    struct proc_struct *proc;
+   
+    if ((proc = alloc_proc()) == NULL) {
+        return 0;
+    }
+
+    proc->parent = current;
+
+
+    if (setup_kstack(proc) != 0) {
+       
+    }
+
+    copy_thread(proc, stack, tf);
+
+   //  wakeup_proc(proc);
+
+    ret = proc->pid;
+
+
+   return ret;
+}
