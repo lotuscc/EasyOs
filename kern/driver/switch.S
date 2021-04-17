@@ -1,5 +1,6 @@
 .text
 .globl switch_to
+.globl run_to
 switch_to:                      # switch_to(from, to)
 
     # save from's registers
@@ -15,6 +16,7 @@ switch_to:                      # switch_to(from, to)
     movl %edi, 24(%eax)
     movl %ebp, 28(%eax)
 
+run_to:
     # restore to's registers
     movl 4(%esp), %eax          # not 8(%esp): popped return address already
                                 # eax now points to to

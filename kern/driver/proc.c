@@ -132,10 +132,10 @@ static struct proc_struct* alloc_proc(void) {
         proc->kstack = 0;
         proc->need_resched = 0;
         proc->parent = NULL;
-        proc->mm = NULL;
+      //   proc->mm = NULL;
         memset(&(proc->context), 0, sizeof(struct context));
         proc->tf = NULL;
-        proc->cr3 = boot_cr3;
+      //   proc->cr3 = boot_cr3;
         proc->flags = 0;
         memset(proc->name, 0, PROC_NAME_LEN);
         proc->wait_state = 0;
@@ -204,14 +204,18 @@ setup_kstack(struct proc_struct *proc) {
 //             - setup the kernel entry point and stack of process
 static void
 copy_thread(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf) {
-    proc->tf = (struct trapframe *)(proc->kstack + KSTACKSIZE) - 1;
-    *(proc->tf) = *tf;
-    proc->tf->tf_regs.reg_eax = 0;
-    proc->tf->tf_esp = esp;
-    proc->tf->tf_eflags |= FL_IF;
+   
+   
+   proc->tf = (struct trapframe *)(proc->kstack + KSTACKSIZE) - 1;
+   
 
-    proc->context.eip = (uintptr_t)forkret;
-    proc->context.esp = (uintptr_t)(proc->tf);
+   *(proc->tf) = *tf;
+   proc->tf->tf_regs.reg_eax = 0;
+   proc->tf->tf_esp = esp;
+   proc->tf->tf_eflags |= FL_IF;
+
+   proc->context.eip = (uintptr_t)forkret;
+   proc->context.esp = (uintptr_t)(proc->tf);
 }
 
 
@@ -222,20 +226,22 @@ copy_thread(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf) {
  */
 int
 do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
-    int ret = 0;
-
-    struct proc_struct *proc;
+   current = eos_running_proc();
    
-    if ((proc = alloc_proc()) == NULL) {
-        return 0;
-    }
+   int ret = 0;
+   
+   struct proc_struct *proc;
 
-    proc->parent = current;
+   if ((proc = alloc_proc()) == NULL) {
+      return 0;
+   }
+
+   proc->parent = current;
 
 
-    if (setup_kstack(proc) != 0) {
-       
-    }
+   if (setup_kstack(proc) != 0) {
+      
+   }
 
     copy_thread(proc, stack, tf);
 

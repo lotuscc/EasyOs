@@ -8,16 +8,14 @@
 void dowhile(){
         /* do nothing */
     while (1){
-        vga->putStr("main ");
+        // vga->putStr("main ");
     }
 }
 
-void hello1(void* arg);
-void hello2(void* arg);
+int hello1(void* arg);
+int hello2(void* arg);
 
 int kern_init(void) {
-
-    
 
     extern char etext[], edata[], end[];
 
@@ -50,12 +48,10 @@ int kern_init(void) {
     // 时钟初始化
     timer_init();
     
-    
-
     eos_proc_init();
 
-    eos_proc_start("th1", 20, hello1, 0);
-    eos_proc_start("th2", 20, hello2, 0);
+    eos_proc_start("th1", 2, hello1, 0x22);
+    eos_proc_start("th2", 2, hello2, 0x55);
 
     debug_all_list();
     
@@ -66,16 +62,32 @@ int kern_init(void) {
     dowhile();
 }
 
-void hello1(void* arg){
+int hello1(void* arg){
     asm volatile("sti");
-    while(1){
-        vga->putStr("thread1 ");
+
+    for(int i = 0; i < 4; ++i){
+        vga->putStr("\nthread1 ");
+        vga->putInt(arg);        
     }
+    // while(1){
+    //     vga->putStr("thread1 ");
+    //     vga->putInt(arg);
+    // }
+
+    return 0x111;
 }
 
-void hello2(void* arg){
+int hello2(void* arg){
     asm volatile("sti");
-    while(2){
-        vga->putStr("thread2 ");
+
+    for(int i = 0; i < 4; ++i){
+        vga->putStr("\nthread2 ");
+        vga->putInt(arg);        
     }
+    // while(2){
+    //     vga->putStr("thread2 ");
+    //     vga->putInt(arg);
+    // }
+
+    return 0x222;
 }

@@ -9,6 +9,10 @@
         "elf.h": "c",
         "vmm.h": "c",
         "idt.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "memory.h": "c",
+        "thread.h": "c",
+        "pid.h": "c",
+        "bitmap.h": "c"
     }
 }

@@ -94,6 +94,21 @@ read_ebp(void) {
     return ebp;
 }
 
+static inline uint32_t
+read_eax(void) {
+    uint32_t eax;
+    asm volatile ("movl %%eax, %0" : "=r" (eax));
+    return eax;
+}
+
+static inline uint32_t
+read_esp(void) {
+    uint32_t esp;
+    asm volatile ("movl %%esp, %0" : "=r" (esp));
+    return esp;
+}
+
+
 static inline void
 breakpoint(void) {
     asm volatile ("int $3");

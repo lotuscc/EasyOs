@@ -11,6 +11,9 @@
 // 自定义通用函数类型,它将在很多线程函数中做为形参类型
 typedef void thread_func(void*);
 
+
+typedef void* eos_func(void*);
+
 /* 进程或线程的状态 */
 enum task_status {
    TASK_UNINIT,
@@ -43,7 +46,7 @@ struct context {
     uint32_t ebp;
 };
 
-#define PROC_NAME_LEN 15 
+#define PROC_NAME_LEN 16 
 
 struct proc_struct {
    enum task_status state;                      // Process state
@@ -62,7 +65,7 @@ struct proc_struct {
    
    uintptr_t cr3;                              // CR3 register: the base addr of Page Directroy Table(PDT)
    uint32_t flags;                             // Process flag
-   char name[PROC_NAME_LEN + 1];               // Process name
+   char name[PROC_NAME_LEN];                   // Process name
    struct list_entry_t list_link;              // Process link list
    struct list_entry_t hash_link;              // Process hash list
    int exit_code;                              // exit code (be sent to parent proc)
@@ -112,7 +115,8 @@ void eos_proc_create(struct proc_struct* proc, thread_func func, void* func_arg)
 struct proc_struct* eos_proc_start(char* name, int prio, thread_func function, void* func_arg);
 struct  proc_struct* eos_running_proc(void);
 void eos_schedule(void);
-
+void eos_do_exit(void* arg);
+int eos_do_execve(const char *name, int argc, const char **argv);
 
 void thread_create(struct task_struct* pthread, thread_func function, void* func_arg);
 void init_thread(struct task_struct* pthread, char* name, int prio);

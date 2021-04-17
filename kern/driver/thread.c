@@ -2,6 +2,8 @@
 #include "string.h"
 #include "memory.h"
 #include "vga.h"
+#include "pid.h"
+#include "x86.h"
 
 // struct task_struct* main_thread;       // 主线程PCB
 // struct list thread_ready_list;	      // 就绪队列
@@ -9,6 +11,8 @@
 // static struct list_elem* thread_tag;   // 用于保存队列中的线程结点
 
 extern void switch_to(struct context *from, struct context *to);
+extern void run_to(struct context *to);
+extern void exit_entey(void);
 
 // 获取当前线程pcb指针
 // struct task_struct* running_thread() {
@@ -161,30 +165,46 @@ extern void switch_to(struct context *from, struct context *to);
 // }
 
 
-void eos_proc_create(struct proc_struct* proc, thread_func func, void* func_arg){
-   memset(proc, 0, sizeof(struct proc_struct));
-   
-   proc->context.eip = func;
+// void eos_proc_create(struct proc_struct* proc, thread_func func, void* func_arg){
 
-}
+// }
 
 
 struct proc_struct* eos_proc_start(char* name, int prio, thread_func function, void* func_arg){
    // PCB 使用一页大小,并且位于页低端
    struct proc_struct* proc = get_kernel_pages(1);
 
-   eos_proc_create(proc, function, func_arg);
+   memset(proc, 0, sizeof(struct proc_struct));
+
+   // eos_proc_create(proc, function, func_arg);
+   memset(proc, 0, sizeof(struct proc_struct));
+   
+   proc->context.eip = function;
+
+
 
    strcpy(proc->name, name);
    proc->priority = prio;
 
    proc->state = TASK_READY;
 
-   proc->kstack = (uint32_t)proc + 4096 - 4;
+   proc->pid = eos_getPID();
 
-   proc->context.esp = (uint32_t)proc + 4092;
+   // proc->kstack = (uint32_t)proc + 4096 - 4;
 
+   // 
+   proc->context.esp = (uint32_t)proc + PG_SIZE;
+
+   proc->context.esp -= 4;
+
+   (*(uint32_t*)proc->context.esp) = func_arg;
+
+   proc->context.esp -= 4;
+
+   (*(uint32_t*)proc->context.esp) = exit_entey;
+ 
    ++proc_all_listHead.proc_nums;
+
    list_add(&proc_all_listHead.entry, &proc->all_link);
    
    ++proc_ready_listHead.proc_nums;
@@ -193,9 +213,99 @@ struct proc_struct* eos_proc_start(char* name, int prio, thread_func function, v
    return proc;
 }
 
+
+// exit为系统调用
+// 线程退出,将该线程从链表中去除,并且调度
+void eos_do_exit(void* error_code){
+
+   struct proc_struct* cur = eos_running_proc(); 
+   
+   vga->putStr("\nid: ");
+   vga->putInt(cur->pid);
+   vga->putStr("return: ");
+   vga->putInt(error_code);
+
+   list_del(&cur->ready_link);
+   --proc_ready_listHead.proc_nums;
+
+   list_del(&cur->all_link);
+   --proc_all_listHead.proc_nums;
+
+   //释放PCB空间,本进程的资源应该由父进程释放
+   // 此时释放会出现问题,下面的程序将无法运行
+   // free_kernel_pages((void*)cur);
+   cur->state = TASK_DIED;
+
+   //调度直接使用此调度会出现bug
+   // eos_schedule();
+   struct list_entry_t* t = proc_ready_listHead.entry.next;
+
+   struct proc_struct* next = le2proc(t, ready_link);
+
+   eos_proc_run(next);
+}
+
+
+// 直接运行下一个线程
+void eos_proc_run(struct proc_struct* next){
+   run_to(&next->context);
+}
+
+// 替换执行程序
+// 将线程升级为进程,需要改变页表,进程镜像等
+int eos_do_execve(const char *name, int argc, const char **argv){
+   
+}
+
+// 
+
+// 复制父进程来创建一个子进程,页表,内存完全复制为父进程的
+// 如果fork设置为系统调用的话返回时需要返回到 forkrets
+int eos_do_fork(char* name, int prio, eos_func func, void* arg){
+      // PCB 使用一页大小,并且位于页低端
+   struct proc_struct* proc = get_kernel_pages(1);
+
+   memset(proc, 0, sizeof(struct proc_struct));
+   
+   strcpy(proc->name, name);
+   
+   proc->priority = prio;
+
+   proc->state = TASK_READY;
+
+   // 设置函数位置
+   proc->context.eip = func;
+   
+   // 设置线程栈顶 
+   proc->context.esp = (uint32_t)proc + PG_SIZE;
+
+   proc->context.esp -= 4;
+
+   // 设置函数参数
+   (*(uint32_t*)proc->context.esp) = arg;
+
+   proc->context.esp -= 4;
+
+   // 设置函数返回地址
+   (*(uint32_t*)proc->context.esp) = exit_entey;
+ 
+   // 将
+   ++proc_all_listHead.proc_nums;
+
+   list_add(&proc_all_listHead.entry, &proc->all_link);
+   
+   ++proc_ready_listHead.proc_nums;
+   list_add(&proc_ready_listHead.entry, &proc->ready_link);
+
+   // 返回pid
+   return proc->pid;
+}
+
+
+
 struct  proc_struct* eos_running_proc(void){
-   uint32_t esp; 
-   asm ("mov %%esp, %0" : "=g" (esp));
+   
+   uint32_t esp = read_esp();
    // 取esp整数部分即pcb起始地址
 
    return (struct proc_struct*)(esp & 0xfffff000);
@@ -204,13 +314,15 @@ struct  proc_struct* eos_running_proc(void){
 void eos_schedule(void){
    struct proc_struct* cur = eos_running_proc(); 
    if (cur->state == TASK_RUNNING) { // 若此线程只是cpu时间片到了,将其加入到就绪队列尾
-      // 如果在
+      
+      // 如果已经在read链表中
       if(cur->ready_link.next != NULL){
          list_del(&cur->ready_link);  
+         --proc_ready_listHead.proc_nums;
       }
 
+      // 重新加入到ready链表尾部
       proc_ready_listHead.proc_nums++;
-      
       
       cur->ticks = cur->priority;     // 重新将当前线程的ticks再重置为其priority;
       cur->state = TASK_READY;
@@ -222,7 +334,7 @@ void eos_schedule(void){
       不需要将其加入队列,因为当前线程不在就绪队列中。*/
    }
 
-   // 
+   // ready链表头部寻找线程上CPU运行
    if (proc_ready_listHead.proc_nums != 0){
       struct list_entry_t* t = proc_ready_listHead.entry.next;
 
@@ -258,9 +370,12 @@ static void make_main_thread(void) {
 // 就是为其预留了tcb,地址为0xc009e000,因此不需要通过get_kernel_page另分配一页*/
    struct proc_struct* main_thread = eos_running_proc();
    strcpy(main_thread->name, "main");
-   main_thread->priority = 31;
+   main_thread->priority = 2;
 
    main_thread->state = TASK_RUNNING;
+
+   main_thread->pid = eos_getPID();
+
 
 // main函数是当前线程,当前线程不在thread_ready_list中,
 // 所以只将其加在thread_all_list中. */l
@@ -277,6 +392,8 @@ void eos_proc_init(void){
 
    proc_all_listHead.proc_nums = 0;
    proc_ready_listHead.proc_nums = 0;
+
+   eos_PIDinit();
 
    make_main_thread();
 }

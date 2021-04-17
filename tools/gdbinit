@@ -5,15 +5,8 @@ set logging file gdblog
 set logging on
 
 break kern_init
-break CalMemSize
-break Settest
-break OpenPageing
-break trap_dispatch
 break eos_proc_start
-break dowhile
 break trap_dispatch
-break eos_schedule
-break debug_ready_list
-
+break hello2
 
 x /5i $pc
