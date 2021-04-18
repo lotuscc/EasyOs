@@ -5,7 +5,7 @@
 #include "x86.h"
 
 typedef struct {
-    list_entry_t wait_head;
+    struct list_entry_t wait_head;
 } wait_queue_t;
 
 struct proc_struct;
@@ -14,7 +14,7 @@ typedef struct {
     struct proc_struct *proc;
     uint32_t wakeup_flags;
     wait_queue_t *wait_queue;
-    list_entry_t wait_link;
+    struct list_entry_t wait_link;
 } wait_t;
 
 #define le2wait(le, member)         \

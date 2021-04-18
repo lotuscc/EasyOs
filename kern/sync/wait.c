@@ -18,20 +18,20 @@ wait_queue_init(wait_queue_t *queue) {
 
 void
 wait_queue_add(wait_queue_t *queue, wait_t *wait) {
-    assert(list_empty(&(wait->wait_link)) && wait->proc != NULL);
+    // assert(list_empty(&(wait->wait_link)) && wait->proc != NULL);
     wait->wait_queue = queue;
     list_add_before(&(queue->wait_head), &(wait->wait_link));
 }
 
 void
 wait_queue_del(wait_queue_t *queue, wait_t *wait) {
-    assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
+    // assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
     list_del_init(&(wait->wait_link));
 }
 
 wait_t *
 wait_queue_next(wait_queue_t *queue, wait_t *wait) {
-    assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
+    // assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
     struct list_entry_t *le = list_next(&(wait->wait_link));
     if (le != &(queue->wait_head)) {
         return le2wait(le, wait_link);
@@ -41,7 +41,7 @@ wait_queue_next(wait_queue_t *queue, wait_t *wait) {
 
 wait_t *
 wait_queue_prev(wait_queue_t *queue, wait_t *wait) {
-    assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
+    // assert(!list_empty(&(wait->wait_link)) && wait->wait_queue == queue);
     struct list_entry_t *le = list_prev(&(wait->wait_link));
     if (le != &(queue->wait_head)) {
         return le2wait(le, wait_link);
@@ -83,7 +83,7 @@ wakeup_wait(wait_queue_t *queue, wait_t *wait, uint32_t wakeup_flags, bool del) 
         wait_queue_del(queue, wait);
     }
     wait->wakeup_flags = wakeup_flags;
-    wakeup_proc(wait->proc);
+    // wakeup_proc(wait->proc);
 }
 
 void
