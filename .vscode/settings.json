@@ -13,6 +13,7 @@
         "memory.h": "c",
         "thread.h": "c",
         "pid.h": "c",
-        "bitmap.h": "c"
+        "bitmap.h": "c",
+        "intr.h": "c"
     }
 }
