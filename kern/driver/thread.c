@@ -254,7 +254,7 @@ void eos_proc_run(struct proc_struct* next){
 // 替换执行程序
 // 将线程升级为进程,需要改变页表,进程镜像等
 int eos_do_execve(const char *name, int argc, const char **argv){
-   
+
 }
 
 // 
@@ -297,6 +297,11 @@ int eos_do_fork(char* name, int prio, eos_func func, void* arg){
    ++proc_ready_listHead.proc_nums;
    list_add(&proc_ready_listHead.entry, &proc->ready_link);
 
+   
+   
+   // switch_to(&cur->context, &next->context);
+
+
    // 返回pid
    return proc->pid;
 }
@@ -313,19 +318,14 @@ struct  proc_struct* eos_running_proc(void){
 
 void eos_schedule(void){
    struct proc_struct* cur = eos_running_proc(); 
+   
    if (cur->state == TASK_RUNNING) { // 若此线程只是cpu时间片到了,将其加入到就绪队列尾
       
-      // 如果已经在read链表中
-      if(cur->ready_link.next != NULL){
-         list_del(&cur->ready_link);  
-         --proc_ready_listHead.proc_nums;
-      }
-
       // 重新加入到ready链表尾部
       proc_ready_listHead.proc_nums++;
       
       cur->ticks = cur->priority;     // 重新将当前线程的ticks再重置为其priority;
-      cur->state = TASK_READY;
+      cur->state = TASK_READY;        // 重新将当前线程的状态再重置为就绪;
 
       list_add(proc_ready_listHead.entry.prev, &cur->ready_link);
 
@@ -338,14 +338,15 @@ void eos_schedule(void){
    if (proc_ready_listHead.proc_nums != 0){
       struct list_entry_t* t = proc_ready_listHead.entry.next;
 
+      // 从ready链表中删除
+      list_del(t);  
+      --proc_ready_listHead.proc_nums;
 
       struct proc_struct* next = le2proc(t, ready_link);
       next->state = TASK_RUNNING;
       next->ticks = next->priority;
 
       
-
-
       switch_to(&cur->context, &next->context);
    }
    
