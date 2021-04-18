@@ -16,13 +16,13 @@ typedef void* eos_func(void*);
 
 /* 进程或线程的状态 */
 enum task_status {
-   TASK_UNINIT,
-   TASK_RUNNING,
-   TASK_READY,
-   TASK_BLOCKED,
+   TASK_UNINIT,   // uninitialized
+   TASK_RUNNING,  // runnable(maybe running)
+   TASK_READY,    // ready to run
+   TASK_BLOCKED,  // sleeping 
    TASK_WAITING,
    TASK_HANGING,
-   TASK_DIED
+   TASK_DIED,     // almost dead, and wait parent proc to reclaim his resource   
 };
 
 

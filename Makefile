@@ -14,6 +14,7 @@ Inc =	-Iboot \
 		-Ikern/mm/ \
 		-Ikern/vmm/ \
 		-Ikern/driver/ \
+		-Ikern/sync/ \
 		-Ikern/libs/ 
 
 # first task
@@ -35,9 +36,6 @@ boot: sign
 	
 	./bin/sign ./obj/bootblock.out ./bin/bootblock
 
-
-# $(ASM) $(Inc) $(ASMFLAGS)  -c kern/driver/vector.S -o obj/kern/vector.o
-# $(ASM) $(Inc) $(ASMFLAGS)  -c kern/driver/trapentry.S -o obj/kern/trapentry.o
 kernel:
 	$(CC) $(Inc) $(CFLAGS) -c kern/init/init.c -o obj/kern/init.o
 
@@ -60,6 +58,9 @@ kernel:
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/thread.c -o obj/kern/thread.o
 	
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/pid.c -o obj/kern/pid.o
+
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/intr.c -o obj/kern/intr.o
+
 
 	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.o
 
@@ -84,6 +85,7 @@ kernel:
 		./obj/kern/switch.o 	\
 		./obj/kern/pid.o 	\
 		./obj/kern/entry.o 	\
+		./obj/kern/intr.o	\
 		./obj/kern/memory.o 	
 
 hd60M.img: boot kernel

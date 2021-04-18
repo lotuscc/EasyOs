@@ -14,6 +14,8 @@
         "thread.h": "c",
         "pid.h": "c",
         "bitmap.h": "c",
-        "intr.h": "c"
+        "intr.h": "c",
+        "sync.h": "c",
+        "proc.h": "c"
     }
 }
