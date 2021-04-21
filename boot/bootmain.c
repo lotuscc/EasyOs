@@ -115,8 +115,8 @@ void bootmain(void)
     ((void (*)(void))(ELFHDR->e_entry & 0xFFFFFF))();
 
 bad:
-    outw(0x8A00, 0x8A00);
-    outw(0x8A00, 0x8E00);
+    // outw(0x8A00, 0x8A00);
+    // outw(0x8A00, 0x8E00);
 
     /* do nothing */
     while (1)

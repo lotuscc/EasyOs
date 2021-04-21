@@ -2606,3 +2606,111 @@ Breakpoint 3, trap_dispatch (tf=0xc0112f6c) at kern/driver/idt.c:43
 Continuing.
 
 Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:43
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e61: file kern/driver/thread.c, line 173.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+kern_init () at kern/init/init.c:22
+default_putStr (str=0x1036e0 "etext: ") at kern/vga/vga.c:105
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:107
+getCursorSite () at kern/vga/vga.c:25
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+getCursorSite () at kern/vga/vga.c:27
+Undefined command: "fisnhish".  Try "help".
+Run till exit from #0  getCursorSite () at boot/x86.h:56
+
+Breakpoint 2, eos_proc_start (name=0x1036ff "th1", prio=2, 
+    function=0x100193 <hello1>, func_arg=0x22) at kern/driver/thread.c:173
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x111454 "", prio=1121580, 
+    function=0x111d2c <proc_all_listHead+4>, func_arg=0x70a4)
+    at kern/driver/thread.c:175
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+get_kernel_pages (pg_cnt=0) at kern/driver/memory.c:276
+malloc_kernel_page (pg_cnt=1) at kern/driver/memory.c:239
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+malloc_kernel_page (pg_cnt=1119316) at kern/driver/memory.c:246
+vaddr_kernel_get (pg_cnt=1) at kern/driver/memory.c:106
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+vaddr_kernel_get (pg_cnt=31528) at kern/driver/memory.c:107
+bitmap_scan (btmp=0x111d58 <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:17
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+bitmap_scan (btmp=0x0, cnt=0) at kern/driver/bitmap.c:19
+vaddr_kernel_get (pg_cnt=1) at kern/driver/memory.c:113
+bitmap_set (btmp=0x111d58 <kernel_vaddr>, bit_idx=1, value=0 '\000')
+    at kern/driver/bitmap.c:66
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+bitmap_set (btmp=0x0, bit_idx=1, value=0 '\000') at kern/driver/bitmap.c:68
+vaddr_kernel_get (pg_cnt=1) at kern/driver/memory.c:116
+$1 = 1121624
+Continuing.
+
+Breakpoint 2, eos_proc_start (name=0x103703 "th2", prio=2, 
+    function=0x1001f8 <hello2>, func_arg=0x55) at kern/driver/thread.c:173
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b88) at kern/driver/idt.c:43
+Continuing.
+
+Breakpoint 4, hello2 (
+    arg=<error reading variable: Unknown argument list address for `arg'.>)
+    at kern/init/init.c:80
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+hello2 (arg=0x0) at kern/init/init.c:81
+default_putStr (str=0x103711 "\nthread2 ") at kern/vga/vga.c:105
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0116f84) at kern/driver/idt.c:43
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0xc0116f84) at kern/driver/idt.c:43
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e61: file kern/driver/thread.c, line 173.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
