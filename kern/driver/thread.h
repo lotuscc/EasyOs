@@ -15,7 +15,7 @@ typedef void thread_func(void*);
 typedef void* eos_func(void*);
 
 /* 进程或线程的状态 */
-enum task_status {
+enum proc_status {
    TASK_UNINIT,   // uninitialized
    TASK_RUNNING,  // runnable(maybe running)
    TASK_READY,    // ready to run
@@ -49,7 +49,7 @@ struct context {
 #define PROC_NAME_LEN 16 
 
 struct proc_struct {
-   enum task_status state;                      // Process state
+   enum proc_status state;                      // Process state
    int pid;                                    // Process ID
    int runs;                                   // the running times of Proces
    
@@ -117,6 +117,9 @@ struct  proc_struct* eos_running_proc(void);
 void eos_schedule(void);
 void eos_do_exit(void* arg);
 int eos_do_execve(const char *name, int argc, const char **argv);
+void eos_thread_unblock(struct proc_struct* pthread);
+void eos_thread_block(enum proc_status stat);
+
 
 void thread_create(struct task_struct* pthread, thread_func function, void* func_arg);
 void init_thread(struct task_struct* pthread, char* name, int prio);
@@ -125,7 +128,7 @@ struct task_struct* running_thread(void);
 void schedule(void);
 void thread_init(void);
 void thread_unblock(struct task_struct* pthread);
-void thread_block(enum task_status stat);
+void thread_block(enum proc_status stat);
 
 
 #endif

@@ -4,6 +4,7 @@
 #include "vga.h"
 #include "pid.h"
 #include "x86.h"
+#include "sync.h"
 
 // struct task_struct* main_thread;       // 主线程PCB
 // struct list thread_ready_list;	      // 就绪队列
@@ -128,7 +129,7 @@ extern void exit_entey(void);
 // }
 
 // /* 当前线程将自己阻塞,标志其状态为stat. */
-// void thread_block(enum task_status stat) {
+// void thread_block(enum proc_status stat) {
 // /* stat取值为TASK_BLOCKED,TASK_WAITING,TASK_HANGING,也就是只有这三种状态才不会被调度*/
 //    ASSERT(((stat == TASK_BLOCKED) || (stat == TASK_WAITING) || (stat == TASK_HANGING)));
 //    enum intr_status old_status = intr_disable();
@@ -397,6 +398,45 @@ void eos_proc_init(void){
    eos_PIDinit();
 
    make_main_thread();
+}
+
+
+// 当前线程将自己阻塞,标志其状态为stat.
+// stat取值为TASK_BLOCKED,TASK_WAITING,TASK_HANGING,也就是只有这三种状态才不会被调度
+void eos_thread_block(enum proc_status stat) {
+   
+   bool intr_flag;
+   local_intr_save(intr_flag);
+   {
+      struct proc_struct* cur_thread = eos_running_proc();
+      
+      // 置其状态为stat
+      cur_thread->state = stat;  
+      
+      // 将当前线程换下处理器
+      eos_schedule();		      
+   
+   }
+   // 待当前线程被解除阻塞后才继续运行下面的intr_set_status
+   local_intr_save(intr_flag);
+}
+
+
+
+// 将线程pthread解除阻塞
+void eos_thread_unblock(struct proc_struct* pthread) {
+   bool intr_flag;
+   local_intr_save(intr_flag);
+   {
+      if (pthread->state != TASK_READY) {
+         
+         // 放到队列的最前面,使其尽快得到调度
+         list_add(&proc_ready_listHead.entry, &pthread->ready_link); 
+         
+         pthread->state = TASK_READY;
+      } 
+   }
+   local_intr_save(intr_flag);
 }
 
 void debug_all_list(void){
