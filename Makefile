@@ -61,8 +61,6 @@ kernel:
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/driver/intr.c -o obj/kern/intr.o
 
-	$(CC) $(Inc) $(CFLAGS) -c kern/sync/wait.c -o obj/kern/wait.o
-
 	$(CC) $(Inc) $(CFLAGS) -c kern/sync/sem.c -o obj/kern/sem.o
 
 	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.o
@@ -90,7 +88,6 @@ kernel:
 		./obj/kern/entry.o 	\
 		./obj/kern/intr.o	\
 		./obj/kern/sem.o	\
-		./obj/kern/wait.o	\
 		./obj/kern/memory.o 	
 
 hd60M.img: boot kernel

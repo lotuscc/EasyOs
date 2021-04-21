@@ -2805,3 +2805,365 @@ Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
 Continuing.
 
 Breakpoint 1, kern_init () at kern/init/init.c:18
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e9d: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+kern_init () at kern/init/init.c:22
+default_putStr (str=0x10347c "etext: ") at kern/vga/vga.c:105
+Run till exit from #0  default_putStr (str=0x10347c "etext: ")
+    at kern/vga/vga.c:105
+0x0010004d in kern_init () at kern/init/init.c:24
+kern_init () at kern/init/init.c:25
+default_putInt (num=1062010) at kern/vga/vga.c:143
+Run till exit from #0  default_putInt (num=1062010) at kern/vga/vga.c:143
+0x00100067 in kern_init () at kern/init/init.c:25
+kern_init () at kern/init/init.c:26
+default_putChar (ch=65 'A') at kern/vga/vga.c:88
+Run till exit from #0  default_putChar (ch=65 'A') at kern/vga/vga.c:88
+0x0010007c in kern_init () at kern/init/init.c:26
+#0  0x0010007c in kern_init () at kern/init/init.c:26
+kern_init () at kern/init/init.c:28
+default_putStr (str=0x103484 "edata: ") at kern/vga/vga.c:105
+#0  default_putStr (str=0x103484 "edata: ") at kern/vga/vga.c:105
+#0  default_putStr (str=0x103484 "edata: ") at kern/vga/vga.c:105
+Ambiguous show command "b": backtrace, basenames-may-differ, breakpoint.
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+default_putStr (str=0xa100570 "") at kern/vga/vga.c:107
+$1 = 31672
+Run till exit from #0  default_putStr (str=0xa100570 "") at kern/vga/vga.c:109
+
+Breakpoint 2, eos_proc_start (name=0x10349b "th1", prio=2, 
+    function=0x100193 <hello1>, func_arg=0x22) at kern/driver/thread.c:174
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x110454 "", prio=1117484, 
+    function=0x110d2c <proc_all_listHead+4>, func_arg=0x70a4)
+    at kern/driver/thread.c:176
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+get_kernel_pages (pg_cnt=0) at kern/driver/memory.c:276
+Run till exit from #0  get_kernel_pages (pg_cnt=0) at kern/driver/memory.c:276
+
+Breakpoint 2, eos_proc_start (name=0x10349f "th2", prio=2, 
+    function=0x1001f8 <hello2>, func_arg=0x55) at kern/driver/thread.c:174
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x70a4 "\244@\021\300,\r\021", prio=1117484, 
+    function=0xc01140a4, func_arg=0xc01140a4) at kern/driver/thread.c:176
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:276
+malloc_kernel_page (pg_cnt=1) at kern/driver/memory.c:239
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+malloc_kernel_page (pg_cnt=0) at kern/driver/memory.c:246
+vaddr_kernel_get (pg_cnt=1) at kern/driver/memory.c:106
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+vaddr_kernel_get (pg_cnt=4294966272) at kern/driver/memory.c:107
+bitmap_scan (btmp=0x110d58 <kernel_vaddr>, cnt=1) at kern/driver/bitmap.c:17
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+bitmap_scan (btmp=0x0, cnt=1056183) at kern/driver/bitmap.c:19
+vaddr_kernel_get (pg_cnt=2) at kern/driver/memory.c:113
+bitmap_set (btmp=0x110d58 <kernel_vaddr>, bit_idx=2, value=0 '\000')
+    at kern/driver/bitmap.c:66
+0x0010025d in __x86.get_pc_thunk.ax ()
+Continuing.
+
+Breakpoint 3, trap_dispatch (tf=0x7b88) at kern/driver/idt.c:43
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+trap_dispatch (tf=0x7b78) at kern/driver/idt.c:45
+eos_schedule () at kern/driver/thread.c:320
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_schedule () at kern/driver/thread.c:321
+$2 = (struct proc_struct *) 0xfffffc00
+$3 = {state = 1122343, pid = 0, runs = 0, kstack = 0, need_resched = 0, 
+  parent = 0x0, mm = 0x0, context = {eip = 0, esp = 0, ebx = 0, ecx = 0, 
+    edx = 0, esi = 0, edi = 0, ebp = 0}, tf = 0x0, cr3 = 0, flags = 0, 
+  name = '\000' <repeats 15 times>, list_link = {prev = 0x0, next = 0x0}, 
+  hash_link = {prev = 0x0, next = 0x0}, exit_code = 0, wait_state = 0, 
+  cptr = 0x0, yptr = 0x0, optr = 0x0, rq = 0x0, run_link = {prev = 0x0, 
+    next = 0x0}, time_slice = 0, pgdir = 0x0, userprog_vaddr = {
+    vaddr_bitmap = {len = 0, bits = 0x0}, vaddr_start = 0}, ready_link = {
+    prev = 0x0, next = 0x0}, all_link = {prev = 0x0, next = 0x0}, 
+  priority = 0, ticks = 0, stack_magic = 0}
+$4 = (struct proc_struct *) 0xfffffc00
+$5 = 0x1023d6
+$6 = (struct list_entry_t *) 0xfff00454
+$7 = 0xfff00454
+$8 = (struct proc_struct *) 0x102e3b <palloc+16>
+$9 = (struct list_entry_t *) 0xfff00454
+switch_to () at kern/driver/switch.S:7
+switch_to () at kern/driver/switch.S:11
+run_to () at kern/driver/switch.S:21
+run_to () at kern/driver/switch.S:24
+run_to () at kern/driver/switch.S:33
+
+Breakpoint 4, hello2 (
+    arg=<error reading variable: Unknown argument list address for `arg'.>)
+    at kern/init/init.c:80
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+hello2 (arg=0x0) at kern/init/init.c:81
+$10 = (void *) 0x0
+=> 0x10020e <hello2+22>:	sti    
+   0x10020f <hello2+23>:	movl   $0x0,-0xc(%ebp)
+   0x100216 <hello2+30>:	jmp    0x10024d <hello2+85>
+   0x100218 <hello2+32>:	mov    $0x110480,%eax
+   0x10021e <hello2+38>:	mov    (%eax),%eax
+$11 = (void *) 0xc0115fdc
+default_putStr (str=0x1034ad "\nthread2 ") at kern/vga/vga.c:105
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+default_putStr (str=0x0) at kern/vga/vga.c:107
+Run till exit from #0  default_putStr (str=0x0) at kern/vga/vga.c:107
+
+Breakpoint 3, trap_dispatch (tf=0xc0115f70) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0xc0115f70) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0x0) at kern/driver/idt.c:98
+trap (tf=0x0) at kern/driver/idt.c:100
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+__trapret () at kern/driver/trapentry.S:35
+__trapret () at kern/driver/trapentry.S:36
+__trapret () at kern/driver/trapentry.S:37
+__trapret () at kern/driver/trapentry.S:38
+__trapret () at kern/driver/trapentry.S:43
+__trapret () at kern/driver/trapentry.S:44
+default_putStr (str=0x0) at kern/vga/vga.c:107
+
+Breakpoint 3, trap_dispatch (tf=0xc0115f6c) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0xc0115f6c) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0xc0115f70) at kern/driver/idt.c:98
+Run till exit from #0  0x00100b50 in trap (tf=0xc0115f70)
+    at kern/driver/idt.c:98
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+Run till exit from #0  0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+Run till exit from #0  0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+Run till exit from #0  0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+Run till exit from #0  trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+Run till exit from #0  0x00100b50 in trap (tf=0x7b88) at kern/driver/idt.c:98
+
+Breakpoint 3, trap_dispatch (tf=0x7b84) at kern/driver/idt.c:43
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+trap_dispatch (tf=0x110454) at kern/driver/idt.c:45
+trap (tf=0x730103d5) at kern/driver/idt.c:100
+__alltraps () at kern/driver/trapentry.S:26
+__trapret () at kern/driver/trapentry.S:32
+__trapret () at kern/driver/trapentry.S:35
+__trapret () at kern/driver/trapentry.S:36
+__trapret () at kern/driver/trapentry.S:37
+__trapret () at kern/driver/trapentry.S:38
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e9d: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+Continuing.
+
+Breakpoint 2, eos_proc_start (name=0x10349b "th1", prio=2, 
+    function=0x100193 <hello1>, func_arg=0x22) at kern/driver/thread.c:174
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x110454 "", prio=1117484, 
+    function=0x110d2c <proc_all_listHead+4>, func_arg=0x70a4)
+    at kern/driver/thread.c:176
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+get_kernel_pages (pg_cnt=0) at kern/driver/memory.c:276
+malloc_kernel_page (pg_cnt=1) at kern/driver/memory.c:239
+Run till exit from #0  malloc_kernel_page (pg_cnt=1)
+    at kern/driver/memory.c:239
+0x00103089 in get_kernel_pages (pg_cnt=1115220) at kern/driver/memory.c:276
+Value returned is $1 = (void *) 0xc0114000
+Run till exit from #0  0x00103089 in get_kernel_pages (pg_cnt=1115220)
+    at kern/driver/memory.c:276
+
+Breakpoint 2, eos_proc_start (name=0x10349f "th2", prio=2, 
+    function=0x1001f8 <hello2>, func_arg=0x55) at kern/driver/thread.c:174
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x70a4 "\244@\021\300,\r\021", prio=1117484, 
+    function=0xc01140a4, func_arg=0xc01140a4) at kern/driver/thread.c:176
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+Run till exit from #0  get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00101ebd in eos_proc_start (name=0x110454 "", prio=31672, 
+    function=0x101ead <eos_proc_start+16>, func_arg=0xf770383)
+    at kern/driver/thread.c:176
+Value returned is $2 = (void *) 0xc0115000
+eos_proc_start (name=0x70a4 "\244@\021\300,\r\021", prio=1117484, 
+    function=0xc01140a4, func_arg=0xc01140a4) at kern/driver/thread.c:178
+$3 = (struct proc_struct *) 0x1
+$4 = {state = 1408237823, pid = -1007681281, runs = 1408237794, 
+  kstack = 1408237823, need_resched = 1425015039, parent = 0x53f000ff, 
+  mm = 0x53f000ff, context = {eip = 2783969535, esp = 2280653054, 
+    ebx = 1123025129, ecx = 1123025108, edx = 1123025108, esi = 1123025108, 
+    edi = 1475346644, ebp = 1123025135}, tf = 0x24f000d4, cr3 = 1304428630, 
+  flags = 1106247928, 
+  name = "\370\000\360\376\343\000\360\071\347\000\360Y\370\000\360.", 
+  list_link = {prev = 0xd2f000e8, next = 0x67f000ef}, hash_link = {
+    prev = 0xf2f000d4, next = 0x6ef000e6}, exit_code = 1408237822, 
+  wait_state = 1408237823, cptr = 0x53f000ff, yptr = 0x1cf000ff, 
+  optr = 0x20f00061, rq = 0x53c00094, run_link = {prev = 0x53f000ff, 
+    next = 0x53f000ff}, time_slice = 1408237823, pgdir = 0x53f000ff, 
+  userprog_vaddr = {vaddr_bitmap = {len = 1408237823, 
+      bits = 0x53f000ff <error: Cannot access memory at address 0x53f000ff>}, 
+    vaddr_start = 1408237823}, ready_link = {prev = 0x53f000ff, 
+    next = 0x53f000ff}, all_link = {prev = 0x53f000ff, next = 0x53f000ff}, 
+  priority = 1408237823, ticks = 1408237823, stack_magic = 1408237823}
+$5 = (struct proc_struct *) 0x1
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e9d: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+kern_init () at kern/init/init.c:22
+default_putStr (str=0x10347c "etext: ") at kern/vga/vga.c:105
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:107
+Run till exit from #0  default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:107
+
+Breakpoint 2, eos_proc_start (name=0x10349b "th1", prio=2, 
+    function=0x100193 <hello1>, func_arg=0x22) at kern/driver/thread.c:174
+Breakpoint 1 at 0x100013: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101e9d: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100a44: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x1001f8: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+kern_init () at kern/init/init.c:22
+default_putStr (str=0x10347c "etext: ") at kern/vga/vga.c:105
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:107
+base_putchar (ch=0 '\000', pos=0) at kern/vga/vga.c:61
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+base_putchar (ch=0 '\000', pos=64228864) at kern/vga/vga.c:63
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:118
+base_putchar (ch=101 'e', pos=1) at kern/vga/vga.c:61
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+base_putchar (ch=0 '\000', pos=64228864) at kern/vga/vga.c:63
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:118
+base_putchar (ch=116 't', pos=2) at kern/vga/vga.c:61
+0x0010025d in __x86.get_pc_thunk.ax ()
+Single stepping until exit from function __x86.get_pc_thunk.ax,
+which has no line number information.
+base_putchar (ch=0 '\000', pos=64228864) at kern/vga/vga.c:63
+default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:118
+Run till exit from #0  default_putStr (
+    str=0x100570 <default_clearScreen+49> "\203\304\b\203E\374\001\201}\374\317\a") at kern/vga/vga.c:110
+
+Breakpoint 2, eos_proc_start (name=0x10349b "th1", prio=2, 
+    function=0x100193 <hello1>, func_arg=0x22) at kern/driver/thread.c:174
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+eos_proc_start (name=0x110454 "", prio=1117484, 
+    function=0x110d2c <proc_all_listHead+4>, func_arg=0x70a4)
+    at kern/driver/thread.c:176
+get_kernel_pages (pg_cnt=1) at kern/driver/memory.c:273
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+get_kernel_pages (pg_cnt=0) at kern/driver/memory.c:276
+$1 = 0
+malloc_kernel_page (pg_cnt=1) at kern/driver/memory.c:239
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+malloc_kernel_page (pg_cnt=1115220) at kern/driver/memory.c:246
+vaddr_kernel_get (pg_cnt=1) at kern/driver/memory.c:106
+0x00100261 in __x86.get_pc_thunk.bx ()
+Single stepping until exit from function __x86.get_pc_thunk.bx,
+which has no line number information.
+vaddr_kernel_get (pg_cnt=31528) at kern/driver/memory.c:107
+$2 = 4294967295
