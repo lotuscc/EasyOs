@@ -28,7 +28,7 @@ int kern_init(void) {
     vga->putStr("edata: ");
     vga->putInt(edata);
     vga->putChar('\n');
-
+    
     vga->putStr("edata: ");
     vga->putInt(end);
     vga->putChar('\n');
