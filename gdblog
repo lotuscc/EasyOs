@@ -3167,3 +3167,23 @@ Single stepping until exit from function __x86.get_pc_thunk.bx,
 which has no line number information.
 vaddr_kernel_get (pg_cnt=31528) at kern/driver/memory.c:107
 $2 = 4294967295
+Breakpoint 1 at 0x100005: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101b61: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100873: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x100188: file kern/init/init.c, line 80.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+mem_init () at kern/driver/memory.c:517
+$1 = 33554432
+$2 = 0x2000000
+Continuing.
+
+Breakpoint 2, eos_proc_start (name=0x102d1f "th1", prio=2, function=0x10013e <hello1>, func_arg=0x22)
+    at kern/driver/thread.c:174
+$3 = (struct proc_struct *) 0xc0113000
