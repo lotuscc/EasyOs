@@ -63,6 +63,8 @@ kernel:
 
 	$(CC) $(Inc) $(CFLAGS) -c kern/sync/sem.c -o obj/kern/sem.o
 
+	$(CC) $(Inc) $(CFLAGS) -c kern/driver/console.c -o obj/kern/console.o
+
 	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/trapentry.S -o obj/kern/trapentry.o
 
 	$(ASM) $(Inc) $(ASMFLAGS) -c kern/driver/vector.S -o obj/kern/vector.o
@@ -88,6 +90,7 @@ kernel:
 		./obj/kern/entry.o 	\
 		./obj/kern/intr.o	\
 		./obj/kern/sem.o	\
+		./obj/kern/console.o	\
 		./obj/kern/memory.o 	
 
 hd60M.img: boot kernel

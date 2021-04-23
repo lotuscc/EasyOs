@@ -16,6 +16,8 @@
         "bitmap.h": "c",
         "intr.h": "c",
         "sync.h": "c",
-        "proc.h": "c"
+        "proc.h": "c",
+        "console.h": "c",
+        "sem.h": "c"
     }
 }

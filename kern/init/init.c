@@ -3,7 +3,7 @@
 #include "pic.h"
 #include "timer.h"
 #include "thread.h"
-
+#include "console.h"
 
 void dowhile(){
         /* do nothing */
@@ -35,8 +35,10 @@ int kern_init(void) {
 
     vga->putStr("Page init now\n");
     
+    // 物理内存初始化
     mem_init();
 
+    // 虚拟内存初始化
     vmm_init();
     
     // 中断控制器初始化
@@ -47,7 +49,10 @@ int kern_init(void) {
 
     // 时钟初始化
     timer_init();
-    
+
+    // 终端初始化
+    eos_console_init();
+
     eos_proc_init();
 
     eos_proc_start("th1", 2, hello1, 0x22);
