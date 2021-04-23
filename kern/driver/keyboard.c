@@ -34,8 +34,13 @@
 #define caps_lock_make 	0x3a
 
 // 定义以下变量记录相应键是否按下的状态,
+volatile static bool ctrl_status = 0;
+volatile static bool shift_status = 0;
+volatile static bool alt_status = 0;
+volatile static bool caps_lock_status = 0;
+
 // ext_scancode用于记录makecode是否以0xe0开头
-static bool ctrl_status, shift_status, alt_status, caps_lock_status, ext_scancode;
+static bool ext_scancode = 0;
 
 // 以通码make_code为索引的二维数组
 static char keymap[][2] = {
@@ -106,22 +111,22 @@ static char keymap[][2] = {
 // 键盘中断处理程序
 void intr_keyboard_handler(void) {
 
-// 这次中断发生前的上一次中断,以下任意三个键是否有按下
-   bool ctrl_down_last = ctrl_status;	  
-   bool shift_down_last = shift_status;
-   bool caps_lock_last = caps_lock_status;
+    // 这次中断发生前的上一次中断,以下任意三个键是否有按下
+    bool ctrl_down_last = ctrl_status;	  
+    bool shift_down_last = shift_status;
+    bool caps_lock_last = caps_lock_status;
 
-   bool break_code;
-   uint16_t scancode = inb(KBD_BUF_PORT);
+    bool break_code;
+    uint16_t scancode = inb(KBD_BUF_PORT);
 
-// 若扫描码是e0开头的,表示此键的按下将产生多个扫描码,
-// 所以马上结束此次中断处理函数,等待下一个扫描码进来
+    // 若扫描码是e0开头的,表示此键的按下将产生多个扫描码,
+    // 所以马上结束此次中断处理函数,等待下一个扫描码进来
     if (scancode == 0xe0) { 
         ext_scancode = true;    // 打开e0标记
         return;
     }
 
-// 如果上次是以0xe0开头,将扫描码合并
+    // 如果上次是以0xe0开头,将扫描码合并
     if (ext_scancode) {
         scancode = ((0xe000) | scancode);
         ext_scancode = false;   // 关闭e0标记
@@ -235,5 +240,14 @@ void intr_keyboard_handler(void) {
 
 // 键盘初始化
 void keyboard_init() {
+ 
+    // 必须在此显示初始化为0,初始化时会产生bug,不为0
+    // 定义以下变量记录相应键是否按下的状态,
+    ctrl_status = 0;
+    shift_status = 0;
+    alt_status = 0;
+    caps_lock_status = 0;
 
+    // ext_scancode用于记录makecode是否以0xe0开头
+    ext_scancode = 0;
 }

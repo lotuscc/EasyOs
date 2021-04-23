@@ -62,6 +62,8 @@ int kern_init(void) {
     
     // debug_ready_list();
 
+    keyboard_init();
+    
     asm volatile("sti");	     // 为演示中断处理,在此临时开中断
 
     dowhile();

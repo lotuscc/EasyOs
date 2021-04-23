@@ -7,6 +7,6 @@ set logging on
 break kern_init
 break eos_proc_start
 break trap_dispatch
-break hello2
+break intr_keyboard_handler
 
 x /5i $pc
