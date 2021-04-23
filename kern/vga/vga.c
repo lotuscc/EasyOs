@@ -93,10 +93,9 @@ static void default_putChar(char ch){
         pos -= pos % 80;
         pos += 80;
     }else if (ch == '\b'){
-        --pos;
+        base_putchar(' ', --pos);
     }else{
-        base_putchar(ch, pos);
-        ++pos;
+        base_putchar(ch, pos++);
     }
 
     setCursorSite(pos);
