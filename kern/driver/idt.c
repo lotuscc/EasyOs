@@ -2,7 +2,7 @@
 #include "vga.h"
 #include "timer.h"
 #include "thread.h"
-
+#include "keyboard.h"
 
 
 
@@ -69,22 +69,24 @@ static void trap_dispatch(struct trapframe *tf) {
         break;
         
         case IRQ_OFFSET + IRQ_KBD:   // IRQ1 键盘 
-        /* do nothing */
+            /* do nothing */
+            // 
+            intr_keyboard_handler();
         break;
         
         case IRQ_OFFSET + IRQ_COM1:  // IRQ4 串口1
-        /* do nothing */
+            /* do nothing */
         break;
 
         case IRQ_OFFSET + IRQ_IDE1:
         case IRQ_OFFSET + IRQ_IDE2:
-        /* do nothing */
+            /* do nothing */
         break;
 
         //LAB1 CHALLENGE 1 : YOUR CODE you should modify below codes.
         case T_SWITCH_TOU:
         case T_SWITCH_TOK:
-        /* do nothing */
+            /* do nothing */
         break;
 
         default:

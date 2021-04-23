@@ -51,16 +51,16 @@ int kern_init(void) {
     timer_init();
 
     // 终端初始化
-    eos_console_init();
+    // eos_console_init();
 
-    eos_proc_init();
+    // eos_proc_init();
 
-    eos_proc_start("th1", 2, hello1, 0x22);
-    eos_proc_start("th2", 2, hello2, 0x55);
+    // eos_proc_start("th1", 2, hello1, 0x22);
+    // eos_proc_start("th2", 2, hello2, 0x55);
 
-    debug_all_list();
+    // debug_all_list();
     
-    debug_ready_list();
+    // debug_ready_list();
 
     asm volatile("sti");	     // 为演示中断处理,在此临时开中断
 

@@ -1,0 +1,14 @@
+Breakpoint 1 at 0x100005: file kern/init/init.c, line 18.
+Breakpoint 2 at 0x101b2d: file kern/driver/thread.c, line 174.
+Breakpoint 3 at 0x100838: file kern/driver/idt.c, line 43.
+Breakpoint 4 at 0x10014d: file kern/init/init.c, line 85.
+=> 0xfff0:	add    %al,(%eax)
+   0xfff2:	add    %al,(%eax)
+   0xfff4:	add    %al,(%eax)
+   0xfff6:	add    %al,(%eax)
+   0xfff8:	add    %al,(%eax)
+Continuing.
+
+Breakpoint 1, kern_init () at kern/init/init.c:18
+
+Breakpoint 3, trap_dispatch (tf=0x7b94) at kern/driver/idt.c:43
